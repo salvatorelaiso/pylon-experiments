@@ -1,0 +1,40 @@
+0,<pad>
+1,<unk>
+2,<sos>
+3,<eos>
+4,A_SUBMITTED-COMPLETE
+5,A_PARTLYSUBMITTED-COMPLETE
+6,A_PREACCEPTED-COMPLETE
+7,W_Completeren aanvraag-SCHEDULE
+8,W_Completeren aanvraag-START
+9,A_ACCEPTED-COMPLETE
+10,O_SELECTED-COMPLETE
+11,A_FINALIZED-COMPLETE
+12,O_CREATED-COMPLETE
+13,O_SENT-COMPLETE
+14,W_Nabellen offertes-SCHEDULE
+15,W_Completeren aanvraag-COMPLETE
+16,W_Nabellen offertes-START
+17,W_Nabellen offertes-COMPLETE
+18,O_SENT_BACK-COMPLETE
+19,W_Valideren aanvraag-SCHEDULE
+20,W_Valideren aanvraag-START
+21,A_REGISTERED-COMPLETE
+22,A_APPROVED-COMPLETE
+23,O_ACCEPTED-COMPLETE
+24,A_ACTIVATED-COMPLETE
+25,W_Valideren aanvraag-COMPLETE
+26,O_CANCELLED-COMPLETE
+27,W_Wijzigen contractgegevens-SCHEDULE
+28,A_DECLINED-COMPLETE
+29,O_DECLINED-COMPLETE
+30,W_Nabellen incomplete dossiers-SCHEDULE
+31,W_Nabellen incomplete dossiers-START
+32,W_Nabellen incomplete dossiers-COMPLETE
+33,W_Afhandelen leads-SCHEDULE
+34,W_Afhandelen leads-START
+35,W_Afhandelen leads-COMPLETE
+36,A_CANCELLED-COMPLETE
+37,W_Beoordelen fraude-SCHEDULE
+38,W_Beoordelen fraude-START
+39,W_Beoordelen fraude-COMPLETE
