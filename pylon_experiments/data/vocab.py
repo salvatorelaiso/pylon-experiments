@@ -1,6 +1,6 @@
 import pickle
-from typing import Self
 
+import numpy as np
 import pandas as pd
 
 
@@ -78,7 +78,7 @@ class Vocab:
         return vocab
 
 
-def generate_vocab(activities: pd.Series) -> Vocab:
+def generate_vocab(activities: list | np.ndarray | pd.Series) -> Vocab:
     """
     Generate a vocabulary from the unique activities in the traces.
 
@@ -89,7 +89,7 @@ def generate_vocab(activities: pd.Series) -> Vocab:
     vocab = Vocab()
     vocab.add_activities(["<pad>", "<unk>", "<sos>", "<eos>"])
 
-    unique_activities = activities.unique()
+    unique_activities = pd.Series(activities).unique()
     vocab.add_activities(unique_activities)
 
     return vocab
