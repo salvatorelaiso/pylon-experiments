@@ -11,6 +11,10 @@ repos:
     -   id: poetry-check
     -   id: poetry-lock
     -   id: poetry-install
+-   repo: https://github.com/pycqa/autoflake
+    rev: v2.3.1
+    hooks:
+        - id: autoflake
 -   repo: https://github.com/psf/black
     rev: 25.1.0
     hooks:
