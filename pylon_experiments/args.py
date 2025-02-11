@@ -8,5 +8,6 @@ from pylon_experiments.model.model import Args as ModelArgs
 class Args:
     seed: int = 42
     epochs: int = 100
+    learning_rate: float = 0.001
     loader_args: LoaderArgs
     model_args: ModelArgs
