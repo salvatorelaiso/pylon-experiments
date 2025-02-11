@@ -51,7 +51,7 @@ class Loader:
             shuffle=shuffle,
             num_workers=self.num_workers,
             pin_memory=self.pin_memory,
-            collate_fn=Dataset.collate_fn,
+            collate_fn=dataset.collate_fn,
         )
 
     def get_loaders(self) -> tuple[DataLoader, DataLoader, DataLoader]:
