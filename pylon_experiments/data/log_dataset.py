@@ -1,14 +1,12 @@
 import os
 import pathlib
 import pickle
-from typing import Self
 
 import numpy as np
 import numpy.typing as npt
 import torch
-from torch.utils.data import Dataset
 
-from pylon_experiments.data.vocab import Vocab
+from pylon_experiments.data.dataset import Dataset
 
 type Activity = int
 type TraceList = list[Activity]
@@ -46,11 +44,6 @@ class LogDataset(Dataset):
     def save(self, path: str | os.PathLike | pathlib.Path):
         with open(path, "wb") as f:
             pickle.dump(self, f)
-
-    @staticmethod
-    def load(path: str | os.PathLike | pathlib.Path) -> Self:
-        with open(path, "rb") as f:
-            return pickle.load(f)
 
     @staticmethod
     def _generate_prefixes(traces: npt.NDArray):
