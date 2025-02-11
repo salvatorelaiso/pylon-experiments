@@ -6,10 +6,12 @@ import numpy as np
 import torch
 from pydantic.dataclasses import dataclass
 
+from pylon_experiments.args import Args
 from pylon_experiments.data.loader import Args as LoaderArgs
 from pylon_experiments.data.loader import Loader
 from pylon_experiments.model.model import Args as ModelArgs
 from pylon_experiments.model.model import NextActivityPredictor
+from pylon_experiments.model.training.train import train
 
 
 def main(args: Args):
@@ -17,8 +19,21 @@ def main(args: Args):
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
     train_loader, val_loader, test_loader = Loader(args=args.loader_args).get_loaders()
-    model = NextActivityPredictor(args=args.model_args)
+    model = NextActivityPredictor(args=args.model_args).to(device)
+
+    train(
+        epochs=args.epochs,
+        train_loader=train_loader,
+        val_loader=val_loader,
+        test_loader=test_loader,
+        optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
+        criterion=torch.nn.CrossEntropyLoss(),
+        model=model,
+        device=device,
+    )
 
 
 def parse_args():
@@ -32,6 +47,20 @@ def parse_args():
         default=42,
     )
 
+    argparser.add_argument(
+        "--epochs",
+        type=int,
+        help="Number of epochs to train the model. (default: 100)",
+        default=100,
+    )
+
+    argparser.add_argument(
+        "--learning_rate",
+        type=float,
+        help="Learning rate for the optimizer. (default: 0.001)",
+        default=0.001,
+    )
+
     # Loader args
     argparser.add_argument(
         "--path",
@@ -41,12 +70,6 @@ def parse_args():
     )
 
     # Model args
-    argparser.add_argument(
-        "--epochs",
-        type=int,
-        help="Number of epochs to train the model. (default: 100)",
-        default=100,
-    )
     argparser.add_argument(
         "--hidden_size",
         type=int,
@@ -71,6 +94,7 @@ def parse_args():
 
     return Args(
         seed=args.seed,
+        learning_rate=args.learning_rate,
         epochs=args.epochs,
         loader_args=LoaderArgs(dataset_path=cwd / args.path),
         model_args=ModelArgs(
