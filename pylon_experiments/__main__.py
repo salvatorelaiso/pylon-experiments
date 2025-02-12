@@ -1,14 +1,20 @@
 import argparse
+import csv
+import datetime
 import pathlib
 import random
 
 import numpy as np
 import torch
-from pydantic.dataclasses import dataclass
+import torchmetrics
 
 from pylon_experiments.args import Args
 from pylon_experiments.data.loader import Args as LoaderArgs
 from pylon_experiments.data.loader import Loader
+from pylon_experiments.data.vocab import Vocab
+from pylon_experiments.model.metrics.damerau_levehenstein import (
+    DamerauLevenshteinDistance,
+)
 from pylon_experiments.model.model import Args as ModelArgs
 from pylon_experiments.model.model import NextActivityPredictor
 from pylon_experiments.model.training.train import train
@@ -19,21 +25,66 @@ def main(args: Args):
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
+    epoch_offset = 0
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     train_loader, val_loader, test_loader = Loader(args=args.loader_args).get_loaders()
+    vocab = Vocab.load(args.model_args.vocab_path)
     model = NextActivityPredictor(args=args.model_args).to(device)
 
-    train(
+    print(model)
+
+    run_folder_name = (
+        f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.no_constraint"
+    )
+    run_path = (
+        pathlib.Path(__file__).parents[1].resolve()
+        / "runs"
+        / args.loader_args.dataset_path.name
+        / run_folder_name
+    )
+    run_path.mkdir(parents=True, exist_ok=True)
+
+    args.dump_args(run_path / "args.json")
+
+    output = train(
         epochs=args.epochs,
         train_loader=train_loader,
         val_loader=val_loader,
         test_loader=test_loader,
         optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
         criterion=torch.nn.CrossEntropyLoss(),
+        metrics={
+            "accuracy": torchmetrics.Accuracy(
+                task="multiclass", num_classes=len(vocab)
+            ).to(device),
+        },
         model=model,
         device=device,
+        epoch_offset=epoch_offset,
     )
+
+    torch.save(model.state_dict(), run_path / f"model.e_{args.epochs}.pth")
+    torch.save(output.best_model, run_path / f"model.best_val_loss.pth")
+
+    # Save the training history in a csv file
+    csv_path = run_path / "history.csv"
+    with open(csv_path, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        train_keys = output.history["train"].keys()
+        val_keys = output.history["val"].keys()
+        writer.writerow(
+            ["epoch"]
+            + [f"train_{key}" for key in train_keys]
+            + [f"val_{key}" for key in val_keys]
+        )
+        for epoch in range(args.epochs):
+            writer.writerow(
+                [epoch + 1 + epoch_offset]
+                + [output.history["train"][key][epoch] for key in train_keys]
+                + [output.history["val"][key][epoch] for key in val_keys]
+            )
 
 
 def parse_args():
@@ -55,7 +106,7 @@ def parse_args():
     )
 
     argparser.add_argument(
-        "--learning_rate",
+        "--learning-rate",
         type=float,
         help="Learning rate for the optimizer. (default: 0.001)",
         default=0.001,
