@@ -1,0 +1,18 @@
+Activities:
+1) A_PARTLYSUBMITTED : Exists in 100.00% of traces in the log
+2) A_SUBMITTED : Exists in 100.00% of traces in the log
+3) A_DECLINED : Exists in 58.34% of traces in the log
+4) W_Completeren aanvraag : Exists in 56.29% of traces in the log
+5) A_PREACCEPTED : Exists in 56.29% of traces in the log
+Constraints:
+1) In 100.00% of traces in the log, A_PARTLYSUBMITTED occurs exactly once
+2) In 100.00% of traces in the log, A_SUBMITTED occurs exactly once
+3) In 100.00% of traces in the log, A_DECLINED occurs at most once
+4) In 100.00% of traces in the log, A_PREACCEPTED occurs at most once
+5) In 100.00% of traces in the log, A_SUBMITTED and A_PARTLYSUBMITTED occur together if and only if the latter immediately follows the former
+6) In 100.00% of traces in the log, A_SUBMITTED occurs first
+7) In 100.00% of traces in the log, Each time A_PREACCEPTED occurs, then W_Completeren aanvraag occurs immediately afterwards
+8) In 100.00% of traces in the log, Each time A_PREACCEPTED occurs, it is preceded by A_PARTLYSUBMITTED and no other A_PREACCEPTED can recur in between
+9) In 100.00% of traces in the log, Each time A_DECLINED occurs, it is preceded by A_SUBMITTED and no other A_DECLINED can recur in between
+10) In 100.00% of traces in the log, Each time A_DECLINED occurs, it is preceded by A_PARTLYSUBMITTED and no other A_DECLINED can recur in between
+11) In 100.00% of traces in the log, Each time A_PREACCEPTED occurs, it is preceded by A_SUBMITTED and no other A_PREACCEPTED can recur in between
