@@ -7,6 +7,7 @@ import pm4py
 
 from pylon_experiments.data.log_dataset import LogDataset
 from pylon_experiments.data.preprocessing.args import Args
+from pylon_experiments.data.trace_dataset import TraceDataset
 from pylon_experiments.data.vocab import generate_vocab
 
 TRAIN_RATIO = 0.8
@@ -117,6 +118,10 @@ def main(args: Args):
         # Create a LogDataset object and save it as a pickle file
         log_dataset = LogDataset(dataset_traces)
         log_dataset.save(datasets_path / f"{dataset}.pkl")
+
+        # Create a TraceDataset object and save it as a pickle file
+        trace_dataset = TraceDataset(dataset_traces)
+        trace_dataset.save(datasets_path / f"{dataset}.traces.pkl")
 
     print("Writing vocabulary files...")
     vocabulary.save(extracted_path / "vocab.pkl")

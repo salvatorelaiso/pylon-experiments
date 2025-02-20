@@ -1,9 +1,14 @@
 import torch
 import torchmetrics
+from declare4pylon.constraint import DeclareConstraint
 from pydantic.dataclasses import dataclass
 from torch.utils.data import DataLoader
 
-from pylon_experiments.model.training.epoch import test_epoch, train_epoch, val_epoch
+from pylon_experiments.model.model import NextActivityPredictor
+from pylon_experiments.model.training.epoch import (
+    train_with_constraints_epoch,
+    val_epoch,
+)
 
 
 class Config:
@@ -20,7 +25,7 @@ class Args:
     test_loader = DataLoader
     optimizer: torch.optim.Optimizer
     criterion: torch.nn.Module
-    model: torch.nn.Module
+    model: NextActivityPredictor
     device: torch.device
 
 
@@ -36,41 +41,56 @@ def train(
     train_loader: DataLoader,
     val_loader: DataLoader,
     test_loader: DataLoader,
+    train_trace_loader: DataLoader,
+    val_trace_loader: DataLoader,
+    test_trace_loader: DataLoader,
     optimizer: torch.optim.Optimizer,
     criterion: torch.nn.Module,
+    constraints: list[DeclareConstraint],
     metrics: dict[str, torchmetrics.Metric],
-    model: torch.nn.Module,
+    model: NextActivityPredictor,
     device: torch.device,
     epoch_offset: int = 0,
 ):
     history = {"train": {}, "val": {}}
+
     history["train"]["loss"] = []
     history["train"].update({name: [] for name in metrics.keys()})
+
     history["val"]["loss"] = []
     history["val"].update({name: [] for name in metrics.keys()})
+
+    if constraints:
+        history["train"].update({str(constraint): [] for constraint in constraints})
+        history["val"].update({str(constraint): [] for constraint in constraints})
 
     best_val_loss = float("inf")
     best_model = None
 
     for epoch in range(epochs):
-        train_results = train_epoch(
+        train_results = train_with_constraints_epoch(
             epoch=epoch,
             epochs=epochs,
             model=model,
             optimizer=optimizer,
             criterion=criterion,
+            constraints=constraints,
             metrics=metrics,
             device=device,
-            dataloader=train_loader,
+            dataloader=train_trace_loader,
         )
-        val_results = val_epoch(
+
+        val_results = train_with_constraints_epoch(
             epoch=epoch,
             epochs=epochs,
             model=model,
+            optimizer=None,
             criterion=criterion,
+            constraints=constraints,
             metrics=metrics,
             device=device,
-            dataloader=val_loader,
+            dataloader=val_trace_loader,
+            mode="val",
         )
 
         train_loss = train_results["loss"]
@@ -86,11 +106,25 @@ def train(
                 for name in metrics.keys()
             }
         )
+        history["train"].update(
+            {
+                str(constraint): history["train"][str(constraint)]
+                + [train_results[str(constraint)]]
+                for constraint in constraints
+            }
+        )
         history["val"]["loss"].append(val_loss)
         history["val"].update(
             {
                 name: history["val"][name] + [val_results[name]]
                 for name in metrics.keys()
+            }
+        )
+        history["val"].update(
+            {
+                str(constraint): history["val"][str(constraint)]
+                + [val_results[str(constraint)]]
+                for constraint in constraints
             }
         )
 

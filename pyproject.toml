@@ -11,6 +11,8 @@ pydantic = "^2.10.6"
 tqdm = "^4.67.1"
 torchmetrics = "^1.6.1"
 pyxdameraulevenshtein = "^1.8.0"
+pylon-lib = "^0.1.0"
+declare4pylon = {git = "https://github.com/salvatorelaiso/declare4pylon.git"}
 
 
 [tool.poetry.group.dev.dependencies]

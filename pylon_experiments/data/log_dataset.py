@@ -16,12 +16,8 @@ type TraceArray = npt.NDArray[np.int32]
 class LogDataset(Dataset):
 
     def __init__(self, traces: list[TraceList]):
-        self.traces = np.array([np.array(trace) for trace in traces], dtype=object)
-        self.traces_lengths = np.array(
-            [len(trace) for trace in self.traces], dtype=np.uint8
-        )
         self.prefixes, self.targets, self.lengths = LogDataset._generate_prefixes(
-            self.traces
+            traces
         )
 
     def __len__(self):

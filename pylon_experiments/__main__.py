@@ -7,6 +7,9 @@ import random
 import numpy as np
 import torch
 import torchmetrics
+from declare4pylon.relation.settings import RelationConstraintSettings
+from declare4pylon.relation.succession import AlternateSuccessionConstraint
+from pylon.sampling_solver import WeightedSamplingSolver
 
 from pylon_experiments.args import Args
 from pylon_experiments.data.loader import Args as LoaderArgs
@@ -29,7 +32,7 @@ def main(args: Args):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    train_loader, val_loader, test_loader = Loader(args=args.loader_args).get_loaders()
+    loaders = Loader(args=args.loader_args).get_loaders()
     vocab = Vocab.load(args.model_args.vocab_path)
     model = NextActivityPredictor(args=args.model_args).to(device)
 
@@ -50,11 +53,20 @@ def main(args: Args):
 
     output = train(
         epochs=args.epochs,
-        train_loader=train_loader,
-        val_loader=val_loader,
-        test_loader=test_loader,
+        train_loader=loaders["train"],
+        val_loader=loaders["val"],
+        test_loader=loaders["test"],
+        train_trace_loader=loaders["train_traces"],
+        val_trace_loader=loaders["val_traces"],
+        test_trace_loader=loaders["test_traces"],
         optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
         criterion=torch.nn.CrossEntropyLoss(),
+        constraints=[
+            AlternateSuccessionConstraint(
+                settings=RelationConstraintSettings(a=10, b=12),
+                solver=WeightedSamplingSolver(num_samples=100),
+            )
+        ],
         metrics={
             "accuracy": torchmetrics.Accuracy(
                 task="multiclass", num_classes=len(vocab)

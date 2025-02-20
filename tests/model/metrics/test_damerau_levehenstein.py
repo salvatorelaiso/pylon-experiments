@@ -9,7 +9,7 @@ from pylon_experiments.model.metrics.damerau_levehenstein import (
 
 
 class TestDamerauLevenshteinMetrics(unittest.TestCase):
-    def test_fast_damerau_levenshtein(self):
+    def test_damerau_levenshtein_function(self):
         """Test the behavior of the function provided by the pyxdameraulevenshtein package."""
 
         identical_strings_distance = damerau_levenshtein_distance("hello", "hello")

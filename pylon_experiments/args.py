@@ -2,7 +2,7 @@ import json
 import os
 import pathlib
 
-from pydantic.dataclasses import dataclass
+from pydantic.dataclasses import Field, dataclass
 
 from pylon_experiments.data.loader import Args as LoaderArgs
 from pylon_experiments.model.model import Args as ModelArgs
