@@ -5,10 +5,7 @@ from pydantic.dataclasses import dataclass
 from torch.utils.data import DataLoader
 
 from pylon_experiments.model.model import NextActivityPredictor
-from pylon_experiments.model.training.epoch import (
-    train_with_constraints_epoch,
-    val_epoch,
-)
+from pylon_experiments.model.training.epoch import train_with_constraints_epoch
 
 
 class Config:
@@ -32,7 +29,10 @@ class Args:
 @dataclass(frozen=True, kw_only=True, config=Config)
 class TrainOutput:
     history: dict
-    best_model: torch.nn.Module
+    best_loss_model: torch.nn.Module
+    best_acc_model: torch.nn.Module
+    best_loss_epoch: int
+    best_acc_epoch: int
 
 
 def train(
@@ -41,9 +41,6 @@ def train(
     train_loader: DataLoader,
     val_loader: DataLoader,
     test_loader: DataLoader,
-    train_trace_loader: DataLoader,
-    val_trace_loader: DataLoader,
-    test_trace_loader: DataLoader,
     optimizer: torch.optim.Optimizer,
     criterion: torch.nn.Module,
     constraints: list[DeclareConstraint],
@@ -65,7 +62,12 @@ def train(
         history["val"].update({str(constraint): [] for constraint in constraints})
 
     best_val_loss = float("inf")
-    best_model = None
+    best_val_loss_model = None
+    best_val_loss_epoch = None
+
+    best_val_acc = float("-inf")
+    best_val_acc_model = None
+    best_val_acc_epoch = None
 
     for epoch in range(epochs):
         train_results = train_with_constraints_epoch(
@@ -77,7 +79,7 @@ def train(
             constraints=constraints,
             metrics=metrics,
             device=device,
-            dataloader=train_trace_loader,
+            dataloader=train_loader,
         )
 
         val_results = train_with_constraints_epoch(
@@ -89,7 +91,7 @@ def train(
             constraints=constraints,
             metrics=metrics,
             device=device,
-            dataloader=val_trace_loader,
+            dataloader=val_loader,
             mode="val",
         )
 
@@ -97,7 +99,13 @@ def train(
         val_loss = val_results["loss"]
         if val_loss < best_val_loss:
             best_val_loss = val_loss
-            best_model = model
+            best_val_loss_model = model
+            best_val_loss_epoch = epoch
+
+        if val_results["accuracy"] > best_val_acc:
+            best_val_acc = val_results["accuracy"]
+            best_val_acc_model = model
+            best_val_acc_epoch = epoch
 
         history["train"]["loss"].append(train_loss)
         history["train"].update(
@@ -130,5 +138,8 @@ def train(
 
     return TrainOutput(
         history=history,
-        best_model=best_model,
+        best_loss_model=best_val_loss_model,
+        best_acc_model=best_val_acc_model,
+        best_loss_epoch=best_val_loss_epoch,
+        best_acc_epoch=best_val_acc_epoch,
     )

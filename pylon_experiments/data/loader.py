@@ -30,20 +30,13 @@ class Loader:
 
     def _load_datasets(
         self,
-    ) -> tuple[Dataset, Dataset, Dataset, Dataset, Dataset, Dataset]:
-        train_path = self.datasets_path / "train.pkl"
-        val_path = self.datasets_path / "val.pkl"
-        test_path = self.datasets_path / "test.pkl"
-
+    ) -> tuple[Dataset, Dataset, Dataset]:
         train_traces_path = self.datasets_path / "train.traces.pkl"
         val_traces_path = self.datasets_path / "val.traces.pkl"
         test_traces_path = self.datasets_path / "test.traces.pkl"
 
         if not all(
             [
-                train_path.exists(),
-                val_path.exists(),
-                test_path.exists(),
                 train_traces_path.exists(),
                 val_traces_path.exists(),
                 test_traces_path.exists(),
@@ -53,9 +46,6 @@ class Loader:
                 f"Could not find all datasets at {self.datasets_path}."
             )
         return (
-            Dataset.load(train_path),
-            Dataset.load(val_path),
-            Dataset.load(test_path),
             Dataset.load(train_traces_path),
             Dataset.load(val_traces_path),
             Dataset.load(test_traces_path),
@@ -77,20 +67,12 @@ class Loader:
         self,
     ) -> dict[str, DataLoader]:
         (
-            train_dataset,
-            val_dataset,
-            test_dataset,
             train_traces_dataset,
             val_traces_dataset,
             test_traces_dataset,
         ) = self._load_datasets()
         return {
-            "train": self._dataset_to_dataloader(train_dataset, shuffle=True),
-            "val": self._dataset_to_dataloader(val_dataset),
-            "test": self._dataset_to_dataloader(test_dataset),
-            "train_traces": self._dataset_to_dataloader(
-                train_traces_dataset, shuffle=True
-            ),
-            "val_traces": self._dataset_to_dataloader(val_traces_dataset),
-            "test_traces": self._dataset_to_dataloader(test_traces_dataset),
+            "train": self._dataset_to_dataloader(train_traces_dataset, shuffle=True),
+            "val": self._dataset_to_dataloader(val_traces_dataset),
+            "test": self._dataset_to_dataloader(test_traces_dataset),
         }

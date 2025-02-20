@@ -15,6 +15,7 @@ class Args:
     learning_rate: float = 0.001
     loader_args: LoaderArgs
     model_args: ModelArgs
+    constraints: list[str] = Field(default_factory=list)
 
     def dump_args(self, path: str | os.PathLike | pathlib.Path) -> None:
         with open(path, "w") as f:
@@ -29,6 +30,7 @@ class Args:
                         "hidden_size": self.model_args.hidden_size,
                         "num_layers": self.model_args.num_layers,
                     },
+                    "constraints": self.constraints,
                 },
                 f,
                 indent=4,

@@ -20,6 +20,9 @@ from pylon_experiments.model.metrics.damerau_levehenstein import (
 )
 from pylon_experiments.model.model import Args as ModelArgs
 from pylon_experiments.model.model import NextActivityPredictor
+from pylon_experiments.model.training.constraints.constraint import (
+    constraint_from_string,
+)
 from pylon_experiments.model.training.train import train
 
 
@@ -33,14 +36,14 @@ def main(args: Args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     loaders = Loader(args=args.loader_args).get_loaders()
-    vocab = Vocab.load(args.model_args.vocab_path)
+    vocab: Vocab = Vocab.load(args.model_args.vocab_path)
     model = NextActivityPredictor(args=args.model_args).to(device)
+    print("Model:", model)
 
-    print(model)
+    constraints = [constraint_from_string(c, vocab) for c in args.constraints]
+    print(constraints)
 
-    run_folder_name = (
-        f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.no_constraint"
-    )
+    run_folder_name = f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.{'no_constraint' if not constraints else 'constraints'}"
     run_path = (
         pathlib.Path(__file__).parents[1].resolve()
         / "runs"
@@ -56,17 +59,9 @@ def main(args: Args):
         train_loader=loaders["train"],
         val_loader=loaders["val"],
         test_loader=loaders["test"],
-        train_trace_loader=loaders["train_traces"],
-        val_trace_loader=loaders["val_traces"],
-        test_trace_loader=loaders["test_traces"],
         optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
         criterion=torch.nn.CrossEntropyLoss(),
-        constraints=[
-            AlternateSuccessionConstraint(
-                settings=RelationConstraintSettings(a=10, b=12),
-                solver=WeightedSamplingSolver(num_samples=100),
-            )
-        ],
+        constraints=constraints,
         metrics={
             "accuracy": torchmetrics.Accuracy(
                 task="multiclass", num_classes=len(vocab)
@@ -77,8 +72,15 @@ def main(args: Args):
         epoch_offset=epoch_offset,
     )
 
-    torch.save(model.state_dict(), run_path / f"model.e_{args.epochs}.pth")
-    torch.save(output.best_model, run_path / f"model.best_val_loss.pth")
+    torch.save(model.state_dict(), run_path / f"model.epoch_{args.epochs}.pth")
+    torch.save(
+        output.best_acc_model,
+        run_path / f"model.epoch_{output.best_acc_epoch}.best_val_acc.pth",
+    )
+    torch.save(
+        output.best_loss_model,
+        run_path / f"model.epoch_{output.best_loss_epoch}.best_val_loss.pth",
+    )
 
     # Save the training history in a csv file
     csv_path = run_path / "history.csv"
@@ -151,6 +153,13 @@ def parse_args():
         help="Size of the embedding layer. (default: 128)",
         default=128,
     )
+    argparser.add_argument(
+        "--constraints",
+        nargs="*",
+        default=[],
+        type=str,
+        help="Constraints",
+    )
 
     args = argparser.parse_args()
     cwd = pathlib.Path.cwd()
@@ -166,6 +175,7 @@ def parse_args():
             embedding_dim=args.embedding_dim,
             vocab_path=cwd / args.path / "extracted" / "vocab.pkl",
         ),
+        constraints=args.constraints,
     )
 
 
