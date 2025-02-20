@@ -5,7 +5,6 @@ from pathlib import Path
 import pandas as pd
 import pm4py
 
-from pylon_experiments.data.log_dataset import LogDataset
 from pylon_experiments.data.preprocessing.args import Args
 from pylon_experiments.data.trace_dataset import TraceDataset
 from pylon_experiments.data.vocab import generate_vocab
@@ -24,9 +23,9 @@ def df_to_event_log(df: pd.DataFrame):
     :rtype: pm4py.objects.log.obj.EventLog
     """
     # Columns to use as event attributes
-    case_id = "Case ID"
-    activity_key = "Activity"
-    timestamp_key = "Complete Timestamp"
+    case_id = "case:concept:name"
+    activity_key = "concept:name"
+    timestamp_key = "time:timestamp"
 
     # Format the dataframe to be used by PM4Py
     df = pm4py.format_dataframe(
@@ -49,26 +48,24 @@ def event_log_to_traces_dict(
     """
     traces = {}
     for trace in log:
-        # # Get the case id and the sequence of activities
+        # Get the case id and the sequence of activities
         case_id = trace.attributes["concept:name"]
         traces[case_id] = [event["concept:name"] for event in trace]
 
     return traces
 
 
-def get_csv_files(path: Path):
-    return list(path.glob("*.csv"))
+def get_xes_gz_files(path: Path):
+    return list(path.glob("*.xes.gz"))
 
 
 def main(args: Args):
-    csv_files = get_csv_files(args.path / "origin")
-    if not csv_files:
-        raise ValueError(f"No CSV files found in {args.path}")
-    if len(csv_files) > 1:
-        raise ValueError(f"Multiple CSV files found in {args.path}")
-
-    log_file = csv_files[0]
-    log_sep = args.log_sep
+    xes_gz_files = get_xes_gz_files(args.path / "origin")
+    if not xes_gz_files:
+        raise ValueError(f"No XES.GZ files found in {args.path}")
+    if len(xes_gz_files) > 1:
+        raise ValueError(f"Multiple XES.GZ files found in {args.path}")
+    log_file = xes_gz_files[0]
 
     extracted_path = args.path / "extracted"
     datasets_path = args.path / "datasets"
@@ -76,10 +73,10 @@ def main(args: Args):
     extracted_path.mkdir(parents=True, exist_ok=True)
     datasets_path.mkdir(parents=True, exist_ok=True)
 
-    df = pd.read_csv(log_file, sep=log_sep)
+    df = pm4py.read_xes(str(log_file.resolve()))
     event_log = df_to_event_log(df)
     traces = event_log_to_traces_dict(event_log)
-    vocabulary = generate_vocab(df["Activity"])
+    vocabulary = generate_vocab(df["concept:name"])
 
     # Write a CSV file with the all the traces
     print("Writing traces file...")
@@ -115,10 +112,6 @@ def main(args: Args):
             for trace in dataset_traces:
                 f.write(",".join(map(str, trace)) + "\n")
 
-        # Create a LogDataset object and save it as a pickle file
-        log_dataset = LogDataset(dataset_traces)
-        log_dataset.save(datasets_path / f"{dataset}.pkl")
-
         # Create a TraceDataset object and save it as a pickle file
         trace_dataset = TraceDataset(dataset_traces)
         trace_dataset.save(datasets_path / f"{dataset}.traces.pkl")
@@ -137,7 +130,7 @@ def parse_args() -> Args:
     argparser.add_argument(
         "--path",
         type=str,
-        help="Path to the folder specific to the dataset. Expected to contain a folder 'origin' with the log file in csv format.",
+        help="Path to the folder specific to the dataset. Expected to contain a folder 'origin' with the log file in xes.gz format.",
         required=True,
     )
     argparser.add_argument(
