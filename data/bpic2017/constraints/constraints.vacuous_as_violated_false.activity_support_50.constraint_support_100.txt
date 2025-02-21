@@ -1,0 +1,81 @@
+Activities:
+1) A_Concept : Exists in 100.00% of traces in the log
+2) O_Created : Exists in 100.00% of traces in the log
+3) A_Create Application : Exists in 100.00% of traces in the log
+4) W_Complete application : Exists in 100.00% of traces in the log
+5) A_Accepted : Exists in 100.00% of traces in the log
+6) O_Create Offer : Exists in 100.00% of traces in the log
+7) W_Call after offers : Exists in 99.53% of traces in the log
+8) A_Complete : Exists in 99.53% of traces in the log
+9) A_Validating : Exists in 69.41% of traces in the log
+10) W_Validate application : Exists in 69.41% of traces in the log
+11) O_Returned : Exists in 69.09% of traces in the log
+12) W_Handle leads : Exists in 64.82% of traces in the log
+13) A_Submitted : Exists in 64.82% of traces in the log
+14) A_Pending : Exists in 54.68% of traces in the log
+15) O_Accepted : Exists in 54.68% of traces in the log
+Constraints:
+1) In 100.00% of traces in the log, W_Validate application occurs if preceded by A_Complete
+2) In 100.00% of traces in the log, A_Create Application occurs exactly once
+3) In 100.00% of traces in the log, A_Concept occurs exactly once
+4) In 100.00% of traces in the log, A_Accepted occurs exactly once
+5) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by O_Returned and no other A_Pending can recur in between
+6) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by W_Validate application and no other A_Pending can recur in between
+7) In 100.00% of traces in the log, Each time A_Complete occurs, then W_Call after offers occurs immediately beforehand
+8) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by O_Returned and no other O_Accepted can recur in between
+9) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by A_Create Application and no other O_Accepted can recur in between
+10) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by O_Create Offer and no other O_Accepted can recur in between
+11) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by A_Accepted and no other O_Accepted can recur in between
+12) In 100.00% of traces in the log, Each time A_Validating occurs, then W_Validate application occurs immediately beforehand
+13) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by A_Create Application and no other A_Pending can recur in between
+14) In 100.00% of traces in the log, Each time A_Complete occurs, it is preceded by O_Create Offer and no other A_Complete can recur in between
+15) In 100.00% of traces in the log, Each time A_Submitted occurs, then A_Create Application occurs immediately beforehand
+16) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by W_Call after offers and no other A_Pending can recur in between
+17) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by A_Validating and no other A_Pending can recur in between
+18) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by O_Created and no other O_Accepted can recur in between
+19) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by W_Validate application and no other O_Accepted can recur in between
+20) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by W_Complete application and no other O_Accepted can recur in between
+21) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by W_Call after offers and no other O_Accepted can recur in between
+22) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by A_Validating and no other O_Accepted can recur in between
+23) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by A_Concept and no other A_Pending can recur in between
+24) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by A_Complete and no other A_Pending can recur in between
+25) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by W_Complete application and no other A_Pending can recur in between
+26) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by O_Create Offer and no other A_Pending can recur in between
+27) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by A_Concept and no other O_Accepted can recur in between
+28) In 100.00% of traces in the log, Each time A_Submitted occurs, then W_Complete application occurs afterwards before A_Submitted recurs
+29) In 100.00% of traces in the log, Each time A_Submitted occurs, then A_Concept occurs afterwards before A_Submitted recurs
+30) In 100.00% of traces in the log, Each time A_Complete occurs, it is preceded by W_Complete application and no other A_Complete can recur in between
+31) In 100.00% of traces in the log, A_Submitted occurs at most once
+32) In 100.00% of traces in the log, Each time A_Concept occurs, then O_Created occurs afterwards before A_Concept recurs
+33) In 100.00% of traces in the log, A_Pending occurs at most once
+34) In 100.00% of traces in the log, Each time A_Accepted occurs, then O_Created occurs afterwards before A_Accepted recurs
+35) In 100.00% of traces in the log, O_Accepted occurs at most once
+36) In 100.00% of traces in the log, Each time A_Validating occurs, then W_Validate application occurs afterwards before A_Validating recurs
+37) In 100.00% of traces in the log, Each time A_Accepted occurs, then W_Complete application occurs afterwards before A_Accepted recurs
+38) In 100.00% of traces in the log, Each time A_Submitted occurs, then A_Accepted occurs afterwards before A_Submitted recurs
+39) In 100.00% of traces in the log, Each time A_Concept occurs, then W_Complete application occurs afterwards before A_Concept recurs
+40) In 100.00% of traces in the log, Each time A_Submitted occurs, then O_Created occurs afterwards before A_Submitted recurs
+41) In 100.00% of traces in the log, Each time A_Create Application occurs, then O_Created occurs afterwards before A_Create Application recurs
+42) In 100.00% of traces in the log, Each time A_Create Application occurs, then O_Create Offer occurs afterwards before A_Create Application recurs
+43) In 100.00% of traces in the log, Each time A_Create Application occurs, then W_Complete application occurs afterwards before A_Create Application recurs
+44) In 100.00% of traces in the log, Each time A_Concept occurs, then O_Create Offer occurs afterwards before A_Concept recurs
+45) In 100.00% of traces in the log, Each time A_Submitted occurs, then O_Create Offer occurs afterwards before A_Submitted recurs
+46) In 100.00% of traces in the log, O_Create Offer and O_Created occur together if and only if the latter immediately follows the former
+47) In 100.00% of traces in the log, If W_Handle leads occurs then A_Concept occurs after W_Handle leads
+48) In 100.00% of traces in the log, O_Accepted and A_Pending occur together if and only if the latter immediately follows the former
+49) In 100.00% of traces in the log, A_Create Application occurs first
+50) In 100.00% of traces in the log, A_Concept and A_Accepted occur together if and only if the latter follows the former, and they alternate each other
+51) In 100.00% of traces in the log, A_Create Application and A_Concept occur together if and only if the latter follows the former, and they alternate each other
+52) In 100.00% of traces in the log, A_Create Application and A_Accepted occur together if and only if the latter follows the former, and they alternate each other
+53) In 100.00% of traces in the log, O_Create Offer occurs at least once
+54) In 100.00% of traces in the log, O_Created occurs at least once
+55) In 100.00% of traces in the log, A_Submitted occurs if and only if it is followed by W_Handle leads
+56) In 100.00% of traces in the log, A_Create Application occurs if and only if it is followed by W_Complete application
+57) In 100.00% of traces in the log, A_Accepted occurs if and only if it is followed by O_Create Offer
+58) In 100.00% of traces in the log, A_Validating and W_Validate application occur together
+59) In 100.00% of traces in the log, Each time A_Submitted occurs, then W_Handle leads occurs immediately afterwards
+60) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by O_Created and no other A_Pending can recur in between
+61) In 100.00% of traces in the log, Each time A_Accepted occurs, it is preceded by W_Complete application and no other A_Accepted can recur in between
+62) In 100.00% of traces in the log, Each time A_Complete occurs, it is preceded by O_Created and no other A_Complete can recur in between
+63) In 100.00% of traces in the log, Each time A_Pending occurs, it is preceded by A_Accepted and no other A_Pending can recur in between
+64) In 100.00% of traces in the log, Each time O_Accepted occurs, it is preceded by A_Complete and no other O_Accepted can recur in between
