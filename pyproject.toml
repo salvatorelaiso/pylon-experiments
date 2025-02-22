@@ -20,6 +20,9 @@ pre-commit = "^4.1.0"
 pytest = "^8.3.4"
 black = "^25.1.0"
 isort = "^6.0.0"
+tensorboard = "^2.19.0"
+tensorboardx = "^2.6.2.2"
+standard-imghdr = "^3.13.0"
 
 
 [tool.poetry.group.notebook.dependencies]

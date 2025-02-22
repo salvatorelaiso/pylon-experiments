@@ -3,6 +3,7 @@ import csv
 import datetime
 import pathlib
 import random
+import time
 
 import numpy as np
 import torch
@@ -54,6 +55,7 @@ def main(args: Args):
 
     args.dump_args(run_path / "args.json")
 
+    start_time = time.perf_counter()
     output = train(
         epochs=args.epochs,
         train_loader=loaders["train"],
@@ -71,6 +73,11 @@ def main(args: Args):
         device=device,
         epoch_offset=epoch_offset,
     )
+    end_time = time.perf_counter()
+    with open(run_path / "elapsed_time.txt", "w") as file:
+        file.write(
+            f"{int(end_time - start_time)} seconds ({(end_time - start_time) / 60:.2f} minutes)"
+        )
 
     torch.save(model.state_dict(), run_path / f"model.epoch_{args.epochs}.pth")
     torch.save(
