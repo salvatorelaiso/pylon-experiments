@@ -218,14 +218,18 @@ def test(
                 batch_test_prefixes, batch_test_predictions, batch_test_next_activities
             ):
                 f.write(
-                    f"{prediction == next_activity},{np.array2string(prefix)},{prediction},{next_activity}\n"
+                    f"{prediction == next_activity},{np.array2string(prefix, max_line_width=np.inf)},{prediction},{next_activity}\n"
                 )
 
     with open(output_path / "predicted_traces.txt", "w") as f:
         for batch_predicted_traces in predicted_traces:
             for predicted_trace in batch_predicted_traces:
                 f.write(
-                    np.array2string(np.trim_zeros(predicted_trace.cpu().numpy())) + "\n"
+                    np.array2string(
+                        np.trim_zeros(predicted_trace.cpu().numpy()),
+                        max_line_width=np.inf,
+                    )
+                    + "\n"
                 )
 
     epoch_results = {name: metric.compute().item() for name, metric in metrics.items()}
