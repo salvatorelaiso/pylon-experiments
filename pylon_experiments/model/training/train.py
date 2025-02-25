@@ -100,12 +100,12 @@ def train(
         if val_loss < best_val_loss:
             best_val_loss = val_loss
             best_val_loss_model = model
-            best_val_loss_epoch = epoch
+            best_val_loss_epoch = epoch + 1
 
         if val_results["accuracy"] > best_val_acc:
             best_val_acc = val_results["accuracy"]
             best_val_acc_model = model
-            best_val_acc_epoch = epoch
+            best_val_acc_epoch = epoch + 1
 
         history["train"]["loss"].append(train_loss)
         history["train"].update(
