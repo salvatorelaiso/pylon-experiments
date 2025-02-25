@@ -1,15 +1,19 @@
 import unittest
 
 import torch
-from pyxdameraulevenshtein import damerau_levenshtein_distance
+from pyxdameraulevenshtein import (
+    damerau_levenshtein_distance,
+    normalized_damerau_levenshtein_distance,
+)
 
 from pylon_experiments.model.metrics.damerau_levehenstein import (
     DamerauLevenshteinDistance,
+    NormalizedDamerauLevenshteinDistance,
 )
 
 
 class TestDamerauLevenshteinMetrics(unittest.TestCase):
-    def test_damerau_levenshtein_function(self):
+    def test_damerau_levenshtein_distance_function(self):
         """Test the behavior of the function provided by the pyxdameraulevenshtein package."""
 
         identical_strings_distance = damerau_levenshtein_distance("hello", "hello")
@@ -18,7 +22,7 @@ class TestDamerauLevenshteinMetrics(unittest.TestCase):
         different_strings_distance = damerau_levenshtein_distance("hello", "world")
         self.assertEqual(
             different_strings_distance, 4.0
-        )  # 5 (replacement) operations to transform 'hello' into 'world'
+        )  # 4 (replacement) operations to transform 'hello' into 'world'
 
         identical_string_lists_distance = damerau_levenshtein_distance(
             ["hello", "world"], ["hello", "world"]
@@ -75,8 +79,30 @@ class TestDamerauLevenshteinMetrics(unittest.TestCase):
         )
         self.assertEqual(mixed_length_lists_distance, 1.0)
 
-    def test_damerau_levenshtein_distance(self):
-        metric = DamerauLevenshteinDistance()
+    def test_normalized_damerau_levenshtein_distance_function(self):
+        """Test the behavior of the function provided by the pyxdameraulevenshtein package."""
+
+        different_strings_distance = normalized_damerau_levenshtein_distance(
+            "hello", "world"
+        )
+        self.assertAlmostEqual(
+            different_strings_distance, 0.8
+        )  # 4 (replacement) operations to transform 'hello' into 'world' / 5 = 0.8
+
+        different_strings_distance = normalized_damerau_levenshtein_distance(
+            "hello", "world"
+        )
+        self.assertAlmostEqual(
+            different_strings_distance, 0.8
+        )  # 4 (replacement) operations to transform 'hello' into 'world' / 5 = 0.8
+
+        list_distance = normalized_damerau_levenshtein_distance(
+            [0, 1, 2, 3, 4], [0, 9, 9, 9, 9]
+        )
+        self.assertAlmostEqual(list_distance, 4 / 5)
+
+    def test_normalized_damerau_levenshtein_distance_metric(self):
+        metric = DamerauLevenshteinDistance(input_logits=False)
 
         y = torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
         y_hat = torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
@@ -111,6 +137,29 @@ class TestDamerauLevenshteinMetrics(unittest.TestCase):
         self.assertAlmostEqual(
             metric.compute().item(), 0.75
         )  # ( 0.0 + 1.0 + 1.0 + 1.0 ) / 4 = 0.75
+
+    def test_damerau_levenshtein_distance_metric(self):
+        metric = NormalizedDamerauLevenshteinDistance(input_logits=False)
+
+        y = torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 99]])
+        y_hat = torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
+        metric.update(y_hat, y)
+        self.assertAlmostEqual(metric.compute().item(), 0.1)
+        metric.reset()
+
+        y = torch.tensor(
+            [[1, 2, 3, 4, 5, 6, 7, 8, 9, 99], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]
+        )
+        y_hat = torch.tensor(
+            [[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]]
+        )
+        metric.update(y_hat, y)
+        self.assertAlmostEqual(metric.compute().item(), 0.05)
+        metric.update(
+            torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]),
+            torch.tensor([[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]]),
+        )
+        self.assertAlmostEqual(metric.compute().item(), 1 / 30)
 
 
 class TestAccuracyMetric(unittest.TestCase):
