@@ -189,7 +189,7 @@ def main():
             lambda x: float(x.split("] ")[1].removesuffix("%")) / 100
         )
         satisfaction_results["constraint"] = satisfaction_results["constraint"].apply(
-            lambda x: x.split("] ")[0]
+            lambda x: x.split("] ")[0] + "]"
         )
         satisfaction_results.to_csv(
             output_path / "constraints_satisfaction_rate.csv",
