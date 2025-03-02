@@ -1,0 +1,8 @@
+Absence2[A_PREACCEPTED] - Support: 100.00%
+Init[A_SUBMITTED] - Support: 100.00%
+Exactly1[A_PARTLYSUBMITTED] - Support: 100.00%
+Exactly1[A_SUBMITTED] - Support: 100.00%
+Chain Succession[A_SUBMITTED, A_PARTLYSUBMITTED] - Support: 100.00%
+Absence2[A_FINALIZED] - Support: 100.00%
+Absence2[A_ACCEPTED] - Support: 100.00%
+Absence2[A_DECLINED] - Support: 100.00%

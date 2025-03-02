@@ -1,0 +1,20 @@
+Absence2[A_PREACCEPTED] - Support: 100.00%
+Init[A_SUBMITTED] - Support: 100.00%
+Exactly1[A_PARTLYSUBMITTED] - Support: 100.00%
+Exactly1[A_SUBMITTED] - Support: 100.00%
+Chain Succession[A_SUBMITTED, A_PARTLYSUBMITTED] - Support: 100.00%
+Absence2[A_FINALIZED] - Support: 100.00%
+Absence2[A_ACCEPTED] - Support: 100.00%
+Absence2[A_DECLINED] - Support: 100.00%
+Absence2[O_CREATED] - Support: 89.01%
+Absence2[O_SELECTED] - Support: 89.01%
+Absence2[O_SENT] - Support: 89.01%
+Absence[W_Nabellen incomplete dossiers] - Support: 87.41%
+Absence[O_ACCEPTED] - Support: 82.86%
+Absence[A_REGISTERED] - Support: 82.84%
+Absence[A_ACTIVATED] - Support: 82.84%
+Absence[A_APPROVED] - Support: 82.84%
+Absence[O_CANCELLED] - Support: 79.67%
+Absence[A_CANCELLED] - Support: 78.55%
+Absence[O_SENT_BACK] - Support: 75.14%
+Absence[W_Valideren aanvraag] - Support: 75.14%

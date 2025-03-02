@@ -1,0 +1,13 @@
+{
+    "seed": 42,
+    "epochs": 100,
+    "learning_rate": 0.001,
+    "dataset": "bpic2012/60%",
+    "model": {
+        "embedding": 50,
+        "hidden_size": 32,
+        "num_layers": 2,
+        "dropout": 0.2
+    },
+    "constraints": []
+}

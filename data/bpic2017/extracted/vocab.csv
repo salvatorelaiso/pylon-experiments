@@ -1,0 +1,30 @@
+0,<pad>
+1,<unk>
+2,<sos>
+3,<eos>
+4,A_Create Application
+5,A_Submitted
+6,W_Handle leads
+7,W_Complete application
+8,A_Concept
+9,A_Accepted
+10,O_Create Offer
+11,O_Created
+12,O_Sent (mail and online)
+13,W_Call after offers
+14,A_Complete
+15,W_Validate application
+16,A_Validating
+17,O_Returned
+18,W_Call incomplete files
+19,A_Incomplete
+20,O_Accepted
+21,A_Pending
+22,A_Denied
+23,O_Refused
+24,O_Cancelled
+25,A_Cancelled
+26,O_Sent (online only)
+27,W_Assess potential fraud
+28,W_Personal Loan collection
+29,W_Shortened completion

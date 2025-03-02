@@ -1,0 +1,4 @@
+Absence[O_CANCELLED] - Support: 79.67%
+Absence[A_CANCELLED] - Support: 78.55%
+Absence[O_SENT_BACK] - Support: 75.14%
+Absence[W_Valideren aanvraag] - Support: 75.14%

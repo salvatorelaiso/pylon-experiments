@@ -2,7 +2,7 @@ import argparse
 import re
 from pathlib import Path
 
-from .args import Args
+from pylon_experiments.scripts.preprocessing.args import Args
 
 
 def get_files_path(path):

@@ -1,0 +1,8 @@
+Absence2[O_CREATED] - Support: 89.01%
+Absence2[O_SELECTED] - Support: 89.01%
+Absence2[O_SENT] - Support: 89.01%
+Absence[W_Nabellen incomplete dossiers] - Support: 87.41%
+Absence[O_ACCEPTED] - Support: 82.86%
+Absence[A_REGISTERED] - Support: 82.84%
+Absence[A_ACTIVATED] - Support: 82.84%
+Absence[A_APPROVED] - Support: 82.84%

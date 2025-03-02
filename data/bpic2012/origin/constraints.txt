@@ -1,0 +1,40 @@
+Activities:
+1) A_PARTLYSUBMITTED : Exists in 100.00% of traces in the log
+2) A_SUBMITTED : Exists in 100.00% of traces in the log
+3) A_DECLINED : Exists in 58.34% of traces in the log
+4) A_PREACCEPTED : Exists in 56.29% of traces in the log
+5) A_ACCEPTED : Exists in 39.07% of traces in the log
+6) A_FINALIZED : Exists in 38.32% of traces in the log
+7) O_SELECTED : Exists in 38.32% of traces in the log
+8) O_SENT : Exists in 38.32% of traces in the log
+9) O_CREATED : Exists in 38.32% of traces in the log
+10) O_SENT_BACK : Exists in 24.86% of traces in the log
+11) W_Valideren aanvraag : Exists in 24.86% of traces in the log
+12) A_CANCELLED : Exists in 21.45% of traces in the log
+13) O_CANCELLED : Exists in 20.33% of traces in the log
+14) A_APPROVED : Exists in 17.16% of traces in the log
+15) A_ACTIVATED : Exists in 17.16% of traces in the log
+16) A_REGISTERED : Exists in 17.16% of traces in the log
+17) O_ACCEPTED : Exists in 17.14% of traces in the log
+18) W_Nabellen incomplete dossiers : Exists in 12.59% of traces in the log
+Constraints:
+1) In 100.00% of traces in the log, A_PREACCEPTED occurs at most once
+2) In 100.00% of traces in the log, A_SUBMITTED occurs first
+3) In 100.00% of traces in the log, A_PARTLYSUBMITTED occurs exactly once
+4) In 100.00% of traces in the log, A_SUBMITTED occurs exactly once
+5) In 100.00% of traces in the log, A_SUBMITTED and A_PARTLYSUBMITTED occur together if and only if the latter immediately follows the former
+6) In 100.00% of traces in the log, A_FINALIZED occurs at most once
+7) In 100.00% of traces in the log, A_ACCEPTED occurs at most once
+8) In 100.00% of traces in the log, A_DECLINED occurs at most once
+9) In 89.01% of traces in the log, O_CREATED occurs at most once
+10) In 89.01% of traces in the log, O_SELECTED occurs at most once
+11) In 89.01% of traces in the log, O_SENT occurs at most once
+12) In 87.41% of traces in the log, W_Nabellen incomplete dossiers does not occur
+13) In 82.86% of traces in the log, O_ACCEPTED does not occur
+14) In 82.84% of traces in the log, A_REGISTERED does not occur
+15) In 82.84% of traces in the log, A_ACTIVATED does not occur
+16) In 82.84% of traces in the log, A_APPROVED does not occur
+17) In 79.67% of traces in the log, O_CANCELLED does not occur
+18) In 78.55% of traces in the log, A_CANCELLED does not occur
+19) In 75.14% of traces in the log, O_SENT_BACK does not occur
+20) In 75.14% of traces in the log, W_Valideren aanvraag does not occur
