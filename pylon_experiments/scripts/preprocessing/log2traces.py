@@ -6,9 +6,10 @@ import pandas as pd
 import pm4py
 from pm4py.objects.log.util.sorting import sort_timestamp_log
 
-from pylon_experiments.data.preprocessing.args import Args
 from pylon_experiments.data.trace_dataset import TraceDataset
 from pylon_experiments.data.vocab import generate_vocab
+
+from .args import Args
 
 TRAIN_RATIO = 0.8
 VAL_RATIO = 0.1
@@ -81,7 +82,10 @@ def main(args: Args):
 
         # Split the dataset into training, validation, and test sets based on the trace ids
         print("Splitting dataset...")
+        # Remove the test traces from the dataset before shuffling to have the most recent traces in the test set
         keys = list(traces.keys())
+        test_ids = keys[int(len(keys) * (1 - TEST_RATIO)) :]
+        keys = [key for key in keys if key not in test_ids]
         # Shuffle the keys to split the dataset randomly
         random.seed(42)
         random.shuffle(keys)

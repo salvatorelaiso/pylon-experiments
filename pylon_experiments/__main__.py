@@ -42,18 +42,20 @@ def main(args: Args):
     print("Model:", model)
 
     constraints = [constraint_from_string(c, vocab) for c in args.constraints]
-    print(constraints)
+    print("Constraints:", constraints)
 
     run_folder_name = f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.{'no_constraint' if not constraints else 'constraints'}"
     run_path = (
         pathlib.Path(__file__).parents[1].resolve()
         / "runs"
+        / args.loader_args.dataset_path.parent.name
         / args.loader_args.dataset_path.name
         / run_folder_name
     )
     run_path.mkdir(parents=True, exist_ok=True)
 
     args.dump_args(run_path / "args.json")
+    args.print_args()
 
     start_time = time.perf_counter()
     output = train(
@@ -133,6 +135,13 @@ def parse_args():
         default=0.001,
     )
 
+    argparser.add_argument(
+        "--dropout",
+        type=float,
+        help="Dropout rate for the LSTM. (default: 0.0)",
+        default=0.0,
+    )
+
     # Loader args
     argparser.add_argument(
         "--path",
@@ -143,19 +152,19 @@ def parse_args():
 
     # Model args
     argparser.add_argument(
-        "--hidden_size",
+        "--hidden-size",
         type=int,
         help="Size of the hidden state of the LSTM. (default: 128)",
         default=128,
     )
     argparser.add_argument(
-        "--num_layers",
+        "--num-layers",
         type=int,
         help="Number of layers in the LSTM. (default: 1)",
         default=1,
     )
     argparser.add_argument(
-        "--embedding_dim",
+        "--embedding-dim",
         type=int,
         help="Size of the embedding layer. (default: 128)",
         default=128,
@@ -180,7 +189,8 @@ def parse_args():
             hidden_size=args.hidden_size,
             num_layers=args.num_layers,
             embedding_dim=args.embedding_dim,
-            vocab_path=cwd / args.path / "extracted" / "vocab.pkl",
+            dropout=args.dropout,
+            vocab_path=cwd / args.path / ".." / "extracted" / "vocab.pkl",
         ),
         constraints=args.constraints,
     )

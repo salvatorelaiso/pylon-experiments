@@ -14,6 +14,7 @@ class Args:
     hidden_size: int
     num_layers: int
     embedding_dim: int
+    dropout: float
     vocab_path: pathlib.Path = Field(default_factory=lambda value: pathlib.Path(value))
 
 
@@ -36,6 +37,7 @@ class NextActivityPredictor(nn.Module):
             hidden_size=args.hidden_size,
             batch_first=True,
             num_layers=args.num_layers,
+            dropout=args.dropout,
         )
 
         for name, param in self.lstm.named_parameters():

@@ -6,7 +6,10 @@ from declare4pylon.existence.absence import AbsenceConstraint
 from declare4pylon.existence.existence import ExistenceConstraint
 from declare4pylon.existence.init import InitConstraint
 from declare4pylon.existence.last import LastConstraint
-from declare4pylon.existence.settings import ExistenceConstraintSettings
+from declare4pylon.existence.settings import (
+    ExistenceConstraintSettings,
+    ExistenceCountConstraintSettings,
+)
 from declare4pylon.relation.existence import (
     CoExistenceConstraint,
     RespondedExistenceConstraint,
@@ -36,46 +39,64 @@ from pylon.sampling_solver import WeightedSamplingSolver
 
 from pylon_experiments.data.vocab import Vocab
 
-constraint_string_mappings: dict[str, DeclareConstraint] = {
-    "INIT": InitConstraint,
-    "EXISTENCE": ExistenceConstraint,
-    "ABSENCE": AbsenceConstraint,
-    "LAST": LastConstraint,
-    "RESPONSE": ResponseConstraint,
-    "CHAIN RESPONSE": ChainResponseConstraint,
-    "ALTERNATE RESPONSE": AlternateResponseConstraint,
-    "PRECEDENCE": PrecedenceConstraint,
-    "CHAIN PRECEDENCE": ChainPrecedenceConstraint,
-    "ALTERNATE PRECEDENCE": AlternatePrecedenceConstraint,
-    "SUCCESSION": SuccessionConstraint,
-    "CHAIN SUCCESSION": ChainSuccessionConstraint,
-    "ALTERNATE SUCCESSION": AlternateSuccessionConstraint,
-    "RESPONDED EXISTENCE": RespondedExistenceConstraint,
-    "COEXISTENCE": CoExistenceConstraint,
-    "NOT COEXISTENCE": NotCoExistenceConstraint,
-    "NOT SUCCESSION": NotSuccessionConstraint,
-    "NOT CHAIN SUCCESSION": NotChainSuccessionConstraint,
-    "CHOICE": ChoiceConstraint,
-    "EXCLUSIVE CHOICE": ExclusiveChoiceConstraint,
+choice_constraints_mappings: dict[
+    str, tuple[type[ChoiceConstraint], type[DeclareConstraintSettings]]
+] = {
+    "CHOICE": (ChoiceConstraint, ChoiceConstraintSettings),
+    "EXCLUSIVE CHOICE": (ExclusiveChoiceConstraint, ChoiceConstraintSettings),
 }
 
+existence_constraints_mappings: dict[
+    str, tuple[type[ExistenceConstraint], type[DeclareConstraintSettings]]
+] = {
+    "ABSENCE": (AbsenceConstraint, ExistenceCountConstraintSettings),
+    "EXACTLY": (ExistenceConstraint, ExistenceCountConstraintSettings),
+    "EXISTENCE": (ExistenceConstraint, ExistenceConstraintSettings),
+    "INIT": (InitConstraint, ExistenceConstraintSettings),
+    "LAST": (LastConstraint, ExistenceConstraintSettings),
+}
 
-def get_settings(
-    constraint_str: str, activities: list[int]
-) -> DeclareConstraintSettings:
-    if constraint_str in ["EXISTENCE", "ABSENCE", "LAST", "INIT"]:
-        return ExistenceConstraintSettings(activity=activities[0])
-    elif constraint_str in ["CHOICE", "EXCLUSIVE CHOICE"]:
-        return ChoiceConstraintSettings(a=activities[0], b=activities[1])
-    else:
-        return RelationConstraintSettings(a=activities[0], b=activities[1])
+relation_constraints_mappings: dict[
+    str, tuple[type[RelationConstraintSettings], type[DeclareConstraintSettings]]
+] = {
+    "COEXISTENCE": (CoExistenceConstraint, RelationConstraintSettings),
+    "RESPONDED EXISTENCE": (RespondedExistenceConstraint, RelationConstraintSettings),
+    "PRECEDENCE": (PrecedenceConstraint, RelationConstraintSettings),
+    "ALTERNATE PRECEDENCE": (AlternatePrecedenceConstraint, RelationConstraintSettings),
+    "CHAIN PRECEDENCE": (ChainPrecedenceConstraint, RelationConstraintSettings),
+    "RESPONSE": (ResponseConstraint, RelationConstraintSettings),
+    "ALTERNATE RESPONSE": (AlternateResponseConstraint, RelationConstraintSettings),
+    "CHAIN RESPONSE": (ChainResponseConstraint, RelationConstraintSettings),
+    "SUCCESSION": (SuccessionConstraint, RelationConstraintSettings),
+    "ALTERNATE SUCCESSION": (AlternateSuccessionConstraint, RelationConstraintSettings),
+    "CHAIN SUCCESSION": (ChainSuccessionConstraint, RelationConstraintSettings),
+    "NOT COEXISTENCE": (NotCoExistenceConstraint, RelationConstraintSettings),
+    "NOT SUCCESSION": (NotSuccessionConstraint, RelationConstraintSettings),
+    "NOT CHAIN SUCCESSION": (NotChainSuccessionConstraint, RelationConstraintSettings),
+}
+
+constraint_string_mappings: dict[
+    tuple[type[DeclareConstraint]], type[DeclareConstraintSettings]
+] = {
+    **choice_constraints_mappings,
+    **existence_constraints_mappings,
+    **relation_constraints_mappings,
+}
 
 
 def constraint_from_string(string: str, vocab: Vocab) -> DeclareConstraint:
     constraint_str = string.split("[")[0].upper()
+    # If `constraint_str` ends with a number, e.g. "ABSCENCE2", extract the number and remove it from the string
+    count = None
+    if constraint_str[-1].isdigit():
+        constraint_str, count = constraint_str[:-1], int(constraint_str[-1])
+
     if constraint_str not in constraint_string_mappings:
         raise ValueError(f"Constraint {constraint_str} not found.")
-    constraint: type[DeclareConstraint] = constraint_string_mappings[constraint_str]
+
+    constraint_type: type[DeclareConstraint]
+    settings_type: type[DeclareConstraintSettings]
+    constraint_type, settings_type = constraint_string_mappings[constraint_str]
 
     params = string.split("[")[1].replace("]", "").split(",")
 
@@ -85,5 +106,20 @@ def constraint_from_string(string: str, vocab: Vocab) -> DeclareConstraint:
         )
 
     activities = [vocab.activity2idx[param.strip()] for param in params]
-    settings = get_settings(constraint_str, activities)
-    return constraint(settings=settings, solver=WeightedSamplingSolver(num_samples=100))
+
+    if len(params) == 1:
+        settings = (
+            settings_type(activity=activities[0])
+            if count is None
+            else settings_type(activity=activities[0], count=count)
+        )
+    else:
+        settings = (
+            settings_type(a=activities[0], b=activities[1])
+            if count is None
+            else settings_type(a=activities[0], b=activities[1], count=count)
+        )
+
+    return constraint_type(
+        settings=settings, solver=WeightedSamplingSolver(num_samples=100)
+    )

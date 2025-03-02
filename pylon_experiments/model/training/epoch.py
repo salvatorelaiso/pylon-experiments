@@ -208,7 +208,7 @@ def test(
 
     output_path.mkdir(parents=True, exist_ok=True)
     with open(output_path / "predictions.csv", "w") as f:
-        f.write("Correct,Prefix,Prediction,Next Activity")
+        f.write("Correct,Prefix,Prediction,Next Activity\n")
         for (
             batch_test_prefixes,
             batch_test_predictions,
