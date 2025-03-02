@@ -1,6 +1,7 @@
 import csv
 import json
 import pathlib
+import re
 
 import numpy as np
 import pandas as pd
@@ -190,6 +191,13 @@ def main():
         )
         satisfaction_results["constraint"] = satisfaction_results["constraint"].apply(
             lambda x: x.split("] ")[0] + "]"
+        )
+
+        def remove_parentheses_content(s):
+            return re.sub(r"\([^)]*\)", "", s)
+
+        satisfaction_results["constraint"] = satisfaction_results["constraint"].apply(
+            remove_parentheses_content
         )
         satisfaction_results.to_csv(
             output_path / "constraints_satisfaction_rate.csv",
