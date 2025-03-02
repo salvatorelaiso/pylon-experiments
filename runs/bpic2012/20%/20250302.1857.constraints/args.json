@@ -2,7 +2,6 @@
     "seed": 42,
     "epochs": 100,
     "learning_rate": 0.0001,
-    "constraints_multiplier": 0.1,
     "dataset": "bpic2012/20%",
     "model": {
         "embedding": 50,
@@ -11,6 +10,7 @@
         "dropout": 0.0
     },
     "constraints": [
-        "Absence2[A_PREACCEPTED]"
-    ]
+        "Absence2[A_P,REACCEPTED]"
+    ],
+    "constraints_multiplier": 0.1
 }
