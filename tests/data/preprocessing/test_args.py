@@ -3,7 +3,7 @@ from contextlib import nullcontext as does_not_raise
 
 import pytest
 
-from pylon_experiments.scripts.preprocessing.args import Args
+from pylon_experiments.scripts.args import Args
 
 
 @pytest.mark.parametrize(

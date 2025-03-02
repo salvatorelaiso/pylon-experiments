@@ -22,11 +22,12 @@ def train_with_constraints_epoch(
     model: NextActivityPredictor,
     optimizer: torch.optim.Optimizer | None,
     criterion: torch.nn.Module,
-    constraints,
+    constraints: list[DeclareConstraint],
     metrics: dict[str, torchmetrics.Metric],
     device: torch.device,
     dataloader: DataLoader,
     mode: Literal["train", "val", "test"] = "train",
+    constraints_multiplier: float | None = None,
 ):
     loader = tqdm(
         dataloader,
@@ -102,7 +103,9 @@ def train_with_constraints_epoch(
 
             if train:
                 optimizer.zero_grad()
-                total_constraint_loss = sum(constraint_losses_tensors.values())
+                total_constraint_loss = (
+                    sum(constraint_losses_tensors.values()) * constraints_multiplier
+                )
                 total_constraint_loss.backward()
                 optimizer.step()
 

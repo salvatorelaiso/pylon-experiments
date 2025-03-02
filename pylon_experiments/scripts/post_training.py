@@ -1,3 +1,4 @@
+import argparse
 import csv
 import json
 import pathlib
@@ -20,6 +21,7 @@ from pylon_experiments.model.training.constraints.constraint import (
     constraint_from_string,
 )
 from pylon_experiments.model.training.epoch import test
+from pylon_experiments.scripts.args import Args
 
 
 def convert_csv_to_tensorboard(csv_file: pathlib.Path, log_dir: pathlib.Path):
@@ -63,8 +65,10 @@ def plots(csv_file, plots_dir):
         plt.clf()
 
 
-def main():
-    history_files = [file for file in pathlib.Path("runs").rglob("history.csv")]
+def main(args: Args):
+    args.path
+
+    history_files = [file for file in args.path.rglob("history.csv")]
 
     for history_file in history_files:
         print(f"Converting {history_file} to tensorboard format.")
@@ -75,7 +79,7 @@ def main():
         plots_dir.mkdir(exist_ok=True)
         plots(history_file, plots_dir)
 
-    models = [file for file in pathlib.Path("runs").rglob("*.best_val_acc.pth")]
+    models = [file for file in args.path.rglob("*.best_val_acc.pth")]
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     for model_path in models:
@@ -206,5 +210,24 @@ def main():
         )
 
 
+def parse_args() -> Args:
+    argparser = argparse.ArgumentParser(
+        prog="post_training",
+        description="Evaluate the models.",
+    )
+    argparser.add_argument(
+        "--path",
+        type=str,
+        help="Base path where to find the models. (default: 'runs')",
+        required=False,
+        default="runs",
+    )
+
+    args = argparser.parse_args()
+    cwd = pathlib.Path.cwd()
+    return Args(path=cwd / args.path)
+
+
 if __name__ == "__main__":
-    main()
+    args = parse_args()
+    main(args)

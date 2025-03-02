@@ -8,17 +8,11 @@ import time
 import numpy as np
 import torch
 import torchmetrics
-from declare4pylon.relation.settings import RelationConstraintSettings
-from declare4pylon.relation.succession import AlternateSuccessionConstraint
-from pylon.sampling_solver import WeightedSamplingSolver
 
 from pylon_experiments.args import Args
 from pylon_experiments.data.loader import Args as LoaderArgs
 from pylon_experiments.data.loader import Loader
 from pylon_experiments.data.vocab import Vocab
-from pylon_experiments.model.metrics.damerau_levehenstein import (
-    DamerauLevenshteinDistance,
-)
 from pylon_experiments.model.model import Args as ModelArgs
 from pylon_experiments.model.model import NextActivityPredictor
 from pylon_experiments.model.training.constraints.constraint import (
@@ -66,6 +60,7 @@ def main(args: Args):
         optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
         criterion=torch.nn.CrossEntropyLoss(),
         constraints=constraints,
+        constraints_multiplier=args.constraints_multiplier,
         metrics={
             "accuracy": torchmetrics.Accuracy(
                 task="multiclass", num_classes=len(vocab)
@@ -174,7 +169,13 @@ def parse_args():
         nargs="*",
         default=[],
         type=str,
-        help="Constraints",
+        help="List of Declare constraints to use during training. (default: [])",
+    )
+    argparser.add_argument(
+        "--constraints-multiplier",
+        type=float,
+        help="Training multiplier for the constraints loss. (default: 1.0)",
+        default=1.0,
     )
 
     args = argparser.parse_args()
@@ -183,6 +184,7 @@ def parse_args():
     return Args(
         seed=args.seed,
         learning_rate=args.learning_rate,
+        constraints_multiplier=args.constraints_multiplier,
         epochs=args.epochs,
         loader_args=LoaderArgs(dataset_path=cwd / args.path),
         model_args=ModelArgs(

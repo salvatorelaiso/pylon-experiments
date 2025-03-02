@@ -2,7 +2,7 @@ import argparse
 import re
 from pathlib import Path
 
-from pylon_experiments.scripts.preprocessing.args import Args
+from pylon_experiments.scripts.args import Args
 
 
 def get_files_path(path):
@@ -84,7 +84,7 @@ def main(args: Args):
 
 def parse_args() -> Args:
     argparser = argparse.ArgumentParser(
-        prog="log2traces",
+        prog="constraints",
         description="Combines the constraints data from a '.declare' file and a '.txt' file.",
     )
     argparser.add_argument(

@@ -8,7 +8,7 @@ from pm4py.objects.log.util.sorting import sort_timestamp_log
 
 from pylon_experiments.data.trace_dataset import TraceDataset
 from pylon_experiments.data.vocab import generate_vocab
-from pylon_experiments.scripts.preprocessing.args import Args
+from pylon_experiments.scripts.args import Args
 
 TRAIN_RATIO = 0.8
 VAL_RATIO = 0.1

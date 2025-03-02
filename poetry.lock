@@ -304,7 +304,7 @@ torch = "^2.6.0"
 type = "git"
 url = "https://github.com/salvatorelaiso/declare4pylon.git"
 reference = "HEAD"
-resolved_reference = "2f4127ef1805872aeb74bf528f73dd075b4dbe5d"
+resolved_reference = "de544511233fa0a2c6c0fc56d74861e47a348ab4"
 
 [[package]]
 name = "decorator"
