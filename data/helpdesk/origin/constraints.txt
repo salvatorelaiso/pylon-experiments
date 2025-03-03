@@ -1,0 +1,20 @@
+Activities:
+1) Resolve ticket : Exists in 99.76% of traces in the log
+2) Closed : Exists in 99.54% of traces in the log
+3) Assign seriousness : Exists in 98.14% of traces in the log
+4) Take in charge ticket : Exists in 93.56% of traces in the log
+5) Wait : Exists in 26.99% of traces in the log
+Constraints:
+1) In 99.21% of traces in the log, Closed occurs exactly once
+2) In 95.72% of traces in the log, Assign seriousness occurs first
+3) In 91.33% of traces in the log, Resolve ticket occurs exactly once
+4) In 90.83% of traces in the log, Resolve ticket and Closed occur together if and only if the latter immediately follows the former
+5) In 89.54% of traces in the log, Assign seriousness occurs exactly once
+6) In 88.93% of traces in the log, Assign seriousness and Closed occur together if and only if the latter follows the former, and they alternate each other
+7) In 81.81% of traces in the log, Assign seriousness and Resolve ticket occur together if and only if the latter follows the former, and they alternate each other
+8) In 79.96% of traces in the log, Take in charge ticket occurs exactly once
+9) In 79.43% of traces in the log, Take in charge ticket and Closed occur together if and only if the latter follows the former, and they alternate each other
+10) In 77.88% of traces in the log, Take in charge ticket and Resolve ticket occur together if and only if the latter follows the former, and they alternate each other
+11) In 73.01% of traces in the log, Wait does not occur
+12) In 71.40% of traces in the log, Assign seriousness and Take in charge ticket occur together if and only if the latter immediately follows the former
+13) In 71.38% of traces in the log, Each time Resolve ticket occurs, then Take in charge ticket occurs immediately beforehand

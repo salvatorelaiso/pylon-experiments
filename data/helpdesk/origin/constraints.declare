@@ -1,0 +1,26 @@
+activity Resolve ticket
+bind Resolve ticket: org:resource, Resource, Activity
+activity Closed
+bind Closed: org:resource, Resource, Activity
+activity Assign seriousness
+bind Assign seriousness: org:resource, Resource, Activity
+activity Take in charge ticket
+bind Take in charge ticket: org:resource, Resource, Activity
+activity Wait
+bind Wait: org:resource, Resource, Activity
+org:resource: Value 5, Value 6, Value 20, Value 3, Value 10, Value 21, Value 4, Value 11, Value 22, Value 1, Value 2, Value 9, Value 7, Value 8, Value 16, Value 17, Value 18, Value 19, Value 12, Value 13, Value 14, Value 15
+Resource: Value 5, Value 6, Value 20, Value 3, Value 10, Value 21, Value 4, Value 11, Value 22, Value 1, Value 2, Value 9, Value 7, Value 8, Value 16, Value 17, Value 18, Value 19, Value 12, Value 13, Value 14, Value 15
+Activity: Resolve ticket, Assign seriousness, Insert ticket, Take in charge ticket, Create SW anomaly, INVALID, VERIFIED, Require upgrade, DUPLICATE, RESOLVED, Closed, Schedule intervention, Resolve SW anomaly, Wait
+Exactly1[Closed] | |
+Init[Assign seriousness] | |
+Exactly1[Resolve ticket] | |
+Chain Succession[Resolve ticket, Closed] | | |
+Exactly1[Assign seriousness] | |
+Alternate Succession[Assign seriousness, Closed] | | |
+Alternate Succession[Assign seriousness, Resolve ticket] | | |
+Exactly1[Take in charge ticket] | |
+Alternate Succession[Take in charge ticket, Closed] | | |
+Alternate Succession[Take in charge ticket, Resolve ticket] | | |
+Absence[Wait] | |
+Chain Succession[Assign seriousness, Take in charge ticket] | | |
+Chain Precedence[Take in charge ticket, Resolve ticket] | | |
