@@ -46,7 +46,9 @@ def main(args: Args):
         / args.loader_args.dataset_path.name
         / run_folder_name
     )
-    run_path.mkdir(parents=True, exist_ok=True)
+    run_path.mkdir(
+        parents=True, exist_ok=False
+    )  # Exist_ok=False to avoid overwriting existing runs (e.g. when the previous ended in the same minute as the current one)
 
     args.dump_args(run_path / "args.json")
     args.print_args()
