@@ -38,17 +38,22 @@ def main(args: Args):
     constraints = [constraint_from_string(c, vocab) for c in args.constraints]
     print("Constraints:", constraints)
 
-    run_folder_name = f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.{'no_constraint' if not constraints else 'constraints'}"
-    run_path = (
-        pathlib.Path(__file__).parents[1].resolve()
-        / "runs"
-        / args.loader_args.dataset_path.parent.name
-        / args.loader_args.dataset_path.name
-        / run_folder_name
-    )
-    run_path.mkdir(
-        parents=True, exist_ok=False
-    )  # Exist_ok=False to avoid overwriting existing runs (e.g. when the previous ended in the same minute as the current one)
+    while True:
+        try:
+            run_folder_name = f"{datetime.datetime.now(datetime.UTC).strftime("%Y%m%d.%H%M")}.{'no_constraint' if not constraints else 'constraints'}"
+            run_path = (
+                pathlib.Path(__file__).parents[1].resolve()
+                / "runs"
+                / args.loader_args.dataset_path.parent.name
+                / args.loader_args.dataset_path.name
+                / run_folder_name
+            )
+            run_path.mkdir(
+                parents=True, exist_ok=False
+            )  # Exist_ok=False to avoid overwriting existing runs (e.g. when the previous ended in the same minute as the current one)
+            break
+        except FileExistsError:
+            continue
 
     args.dump_args(run_path / "args.json")
     args.print_args()
