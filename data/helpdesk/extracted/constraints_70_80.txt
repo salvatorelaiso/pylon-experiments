@@ -1,0 +1,6 @@
+Exactly1[Take in charge ticket] - Support: 79.96%
+Alternate Succession[Take in charge ticket, Closed] - Support: 79.43%
+Alternate Succession[Take in charge ticket, Resolve ticket] - Support: 77.88%
+Absence[Wait] - Support: 73.01%
+Chain Succession[Assign seriousness, Take in charge ticket] - Support: 71.40%
+Chain Precedence[Take in charge ticket, Resolve ticket] - Support: 71.38%

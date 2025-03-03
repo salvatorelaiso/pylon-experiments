@@ -1,0 +1,3 @@
+Exactly1[Assign seriousness] - Support: 89.54%
+Alternate Succession[Assign seriousness, Closed] - Support: 88.93%
+Alternate Succession[Assign seriousness, Resolve ticket] - Support: 81.81%

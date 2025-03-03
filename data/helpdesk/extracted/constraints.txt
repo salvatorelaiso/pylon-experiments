@@ -1,0 +1,13 @@
+Exactly1[Closed] - Support: 99.21%
+Init[Assign seriousness] - Support: 95.72%
+Exactly1[Resolve ticket] - Support: 91.33%
+Chain Succession[Resolve ticket, Closed] - Support: 90.83%
+Exactly1[Assign seriousness] - Support: 89.54%
+Alternate Succession[Assign seriousness, Closed] - Support: 88.93%
+Alternate Succession[Assign seriousness, Resolve ticket] - Support: 81.81%
+Exactly1[Take in charge ticket] - Support: 79.96%
+Alternate Succession[Take in charge ticket, Closed] - Support: 79.43%
+Alternate Succession[Take in charge ticket, Resolve ticket] - Support: 77.88%
+Absence[Wait] - Support: 73.01%
+Chain Succession[Assign seriousness, Take in charge ticket] - Support: 71.40%
+Chain Precedence[Take in charge ticket, Resolve ticket] - Support: 71.38%

@@ -1,0 +1,4 @@
+Exactly1[Closed] - Support: 99.21%
+Init[Assign seriousness] - Support: 95.72%
+Exactly1[Resolve ticket] - Support: 91.33%
+Chain Succession[Resolve ticket, Closed] - Support: 90.83%
