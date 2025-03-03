@@ -57,26 +57,29 @@ def main(args: Args):
         print(f"{constraint} - Support: {support:.2f}%")
     print(f"Total constraints: {len(constraints)}")
 
-    with open(args.path / "extracted" / "constraints.txt", "w") as f:
+    extracted_path = args.path / "extracted"
+    extracted_path.mkdir(exist_ok=True, parents=True)
+
+    with open(extracted_path / "constraints.txt", "w") as f:
         for constraint, support in constraints:
             f.write(f"{constraint} - Support: {support:.2f}%\n")
 
-    with open(args.path / "extracted" / "constraints_100.txt", "w") as f:
+    with open(extracted_path / "constraints_100.txt", "w") as f:
         for constraint, support in constraints:
             if support == 100:
                 f.write(f"{constraint} - Support: {support:.2f}%\n")
 
-    with open(args.path / "extracted" / "constraints_90_100.txt", "w") as f:
+    with open(extracted_path / "constraints_90_100.txt", "w") as f:
         for constraint, support in constraints:
             if 90 <= support < 100:
                 f.write(f"{constraint} - Support: {support:.2f}%\n")
 
-    with open(args.path / "extracted" / "constraints_80_90.txt", "w") as f:
+    with open(extracted_path / "constraints_80_90.txt", "w") as f:
         for constraint, support in constraints:
             if 80 <= support < 90:
                 f.write(f"{constraint} - Support: {support:.2f}%\n")
 
-    with open(args.path / "extracted" / "constraints_70_80.txt", "w") as f:
+    with open(extracted_path / "constraints_70_80.txt", "w") as f:
         for constraint, support in constraints:
             if 70 <= support < 80:
                 f.write(f"{constraint} - Support: {support:.2f}%\n")
