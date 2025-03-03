@@ -1,0 +1,15 @@
+Chain Precedence[W_Complete application, A_Concept] - Support: 89.24%
+Absence3[W_Handle leads] - Support: 88.44%
+Absence[O_Refused] - Support: 88.19%
+Absence[A_Denied] - Support: 88.09%
+Alternate Precedence[W_Complete application, O_Sent (mail and online)] - Support: 87.99%
+Absence3[A_Validating] - Support: 87.97%
+Absence2[O_Cancelled] - Support: 87.73%
+Alternate Response[O_Sent (mail and online), W_Call after offers] - Support: 86.32%
+Alternate Precedence[W_Complete application, O_Create Offer] - Support: 86.06%
+Alternate Precedence[W_Complete application, O_Created] - Support: 86.06%
+Alternate Succession[O_Create Offer, O_Sent (mail and online)] - Support: 82.86%
+Alternate Response[O_Create Offer, W_Call after offers] - Support: 82.06%
+Alternate Response[O_Created, W_Call after offers] - Support: 82.06%
+Absence2[A_Incomplete] - Support: 81.95%
+Chain Succession[O_Created, O_Sent (mail and online)] - Support: 80.88%

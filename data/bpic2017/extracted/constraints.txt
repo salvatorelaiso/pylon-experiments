@@ -1,0 +1,68 @@
+Chain Succession[O_Create Offer, O_Created] - Support: 100.00%
+Init[A_Create Application] - Support: 100.00%
+Absence2[A_Submitted] - Support: 100.00%
+Absence2[A_Pending] - Support: 100.00%
+Absence2[O_Accepted] - Support: 100.00%
+Absence2[A_Cancelled] - Support: 100.00%
+Alternate Succession[A_Concept, A_Accepted] - Support: 100.00%
+Alternate Succession[A_Create Application, A_Concept] - Support: 100.00%
+Alternate Response[A_Accepted, W_Complete application] - Support: 100.00%
+Alternate Response[A_Create Application, W_Complete application] - Support: 100.00%
+Alternate Succession[A_Create Application, A_Accepted] - Support: 100.00%
+Succession[A_Create Application, W_Complete application] - Support: 100.00%
+Exactly1[A_Create Application] - Support: 100.00%
+Exactly1[A_Concept] - Support: 100.00%
+Exactly1[A_Accepted] - Support: 100.00%
+Co-Existence[O_Created, W_Complete application] - Support: 100.00%
+Chain Precedence[W_Call after offers, A_Complete] - Support: 99.53%
+Alternate Succession[A_Concept, A_Complete] - Support: 99.53%
+Alternate Response[A_Create Application, W_Call after offers] - Support: 99.53%
+Alternate Response[A_Accepted, W_Call after offers] - Support: 99.53%
+Alternate Response[A_Concept, W_Call after offers] - Support: 99.53%
+Alternate Succession[A_Create Application, A_Complete] - Support: 99.53%
+Alternate Succession[A_Accepted, A_Complete] - Support: 99.53%
+Succession[W_Complete application, W_Call after offers] - Support: 99.53%
+Succession[W_Complete application, A_Complete] - Support: 99.53%
+Exactly1[A_Complete] - Support: 99.53%
+Alternate Precedence[W_Complete application, A_Complete] - Support: 99.53%
+Existence3[W_Call after offers] - Support: 99.53%
+Chain Response[A_Complete, W_Call after offers] - Support: 96.47%
+Succession[O_Sent (mail and online), W_Call after offers] - Support: 95.33%
+Absence2[O_Returned] - Support: 95.26%
+Chain Response[A_Accepted, O_Create Offer] - Support: 95.10%
+Existence3[W_Complete application] - Support: 94.09%
+Chain Precedence[W_Complete application, A_Concept] - Support: 89.24%
+Absence3[W_Handle leads] - Support: 88.44%
+Absence[O_Refused] - Support: 88.19%
+Absence[A_Denied] - Support: 88.09%
+Alternate Precedence[W_Complete application, O_Sent (mail and online)] - Support: 87.99%
+Absence3[A_Validating] - Support: 87.97%
+Absence2[O_Cancelled] - Support: 87.73%
+Alternate Response[O_Sent (mail and online), W_Call after offers] - Support: 86.32%
+Alternate Precedence[W_Complete application, O_Create Offer] - Support: 86.06%
+Alternate Precedence[W_Complete application, O_Created] - Support: 86.06%
+Alternate Succession[O_Create Offer, O_Sent (mail and online)] - Support: 82.86%
+Alternate Response[O_Create Offer, W_Call after offers] - Support: 82.06%
+Alternate Response[O_Created, W_Call after offers] - Support: 82.06%
+Absence2[A_Incomplete] - Support: 81.95%
+Chain Succession[O_Created, O_Sent (mail and online)] - Support: 80.88%
+Alternate Succession[A_Create Application, O_Sent (mail and online)] - Support: 76.85%
+Alternate Succession[A_Accepted, O_Sent (mail and online)] - Support: 76.85%
+Alternate Succession[A_Concept, O_Sent (mail and online)] - Support: 76.85%
+Exactly1[O_Sent (mail and online)] - Support: 76.85%
+Chain Response[O_Sent (mail and online), W_Complete application] - Support: 76.52%
+Alternate Succession[O_Sent (mail and online), A_Complete] - Support: 76.52%
+Alternate Response[O_Created, W_Complete application] - Support: 73.03%
+Alternate Response[O_Create Offer, W_Complete application] - Support: 73.03%
+Alternate Succession[A_Create Application, O_Create Offer] - Support: 72.84%
+Alternate Succession[A_Concept, O_Created] - Support: 72.84%
+Alternate Succession[A_Accepted, O_Created] - Support: 72.84%
+Alternate Succession[A_Concept, O_Create Offer] - Support: 72.84%
+Alternate Succession[A_Create Application, O_Created] - Support: 72.84%
+Alternate Succession[A_Accepted, O_Create Offer] - Support: 72.84%
+Exactly1[O_Create Offer] - Support: 72.84%
+Exactly1[O_Created] - Support: 72.84%
+Alternate Succession[O_Created, A_Complete] - Support: 72.43%
+Alternate Succession[O_Create Offer, A_Complete] - Support: 72.43%
+Chain Response[A_Concept, W_Complete application] - Support: 70.66%
+Chain Precedence[W_Complete application, A_Accepted] - Support: 70.61%

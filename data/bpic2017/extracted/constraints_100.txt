@@ -1,0 +1,16 @@
+Chain Succession[O_Create Offer, O_Created] - Support: 100.00%
+Init[A_Create Application] - Support: 100.00%
+Absence2[A_Submitted] - Support: 100.00%
+Absence2[A_Pending] - Support: 100.00%
+Absence2[O_Accepted] - Support: 100.00%
+Absence2[A_Cancelled] - Support: 100.00%
+Alternate Succession[A_Concept, A_Accepted] - Support: 100.00%
+Alternate Succession[A_Create Application, A_Concept] - Support: 100.00%
+Alternate Response[A_Accepted, W_Complete application] - Support: 100.00%
+Alternate Response[A_Create Application, W_Complete application] - Support: 100.00%
+Alternate Succession[A_Create Application, A_Accepted] - Support: 100.00%
+Succession[A_Create Application, W_Complete application] - Support: 100.00%
+Exactly1[A_Create Application] - Support: 100.00%
+Exactly1[A_Concept] - Support: 100.00%
+Exactly1[A_Accepted] - Support: 100.00%
+Co-Existence[O_Created, W_Complete application] - Support: 100.00%

@@ -1,0 +1,17 @@
+Chain Precedence[W_Call after offers, A_Complete] - Support: 99.53%
+Alternate Succession[A_Concept, A_Complete] - Support: 99.53%
+Alternate Response[A_Create Application, W_Call after offers] - Support: 99.53%
+Alternate Response[A_Accepted, W_Call after offers] - Support: 99.53%
+Alternate Response[A_Concept, W_Call after offers] - Support: 99.53%
+Alternate Succession[A_Create Application, A_Complete] - Support: 99.53%
+Alternate Succession[A_Accepted, A_Complete] - Support: 99.53%
+Succession[W_Complete application, W_Call after offers] - Support: 99.53%
+Succession[W_Complete application, A_Complete] - Support: 99.53%
+Exactly1[A_Complete] - Support: 99.53%
+Alternate Precedence[W_Complete application, A_Complete] - Support: 99.53%
+Existence3[W_Call after offers] - Support: 99.53%
+Chain Response[A_Complete, W_Call after offers] - Support: 96.47%
+Succession[O_Sent (mail and online), W_Call after offers] - Support: 95.33%
+Absence2[O_Returned] - Support: 95.26%
+Chain Response[A_Accepted, O_Create Offer] - Support: 95.10%
+Existence3[W_Complete application] - Support: 94.09%
