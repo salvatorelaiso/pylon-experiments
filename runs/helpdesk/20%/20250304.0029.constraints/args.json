@@ -1,0 +1,16 @@
+{
+    "seed": 42,
+    "epochs": 100,
+    "learning_rate": 0.0001,
+    "dataset": "helpdesk/20%",
+    "model": {
+        "embedding": 50,
+        "hidden_size": 32,
+        "num_layers": 2,
+        "dropout": 0.2
+    },
+    "constraints": [
+        "Chain Succession[Resolve ticket, Closed]"
+    ],
+    "constraints_multiplier": 0.1
+}

@@ -1,0 +1,249 @@
+trace,Exactly1[Closed(7)] 99.21%,Init[Assign seriousness(4)] 95.72%,Exactly1[Resolve ticket(6)] 91.33%,"Chain Succession[Resolve ticket(6), Closed(7)] 90.83%",Exactly1[Assign seriousness(4)] 89.54%,"Alternate Succession[Assign seriousness(4), Closed(7)] 88.93%","Alternate Succession[Assign seriousness(4), Resolve ticket(6)] 81.81%",Exactly1[Take in charge ticket(5)] 79.96%,"Alternate Succession[Take in charge ticket(5), Closed(7)] 79.43%","Alternate Succession[Take in charge ticket(5), Resolve ticket(6)] 77.88%",Absence[Wait(9)] 73.01%,"Chain Succession[Assign seriousness(4), Take in charge ticket(5)] 71.4%","Chain Precedence[Take in charge ticket(5), Resolve ticket(6)] 71.38%"
+"[4, 5, 6, 14, 14, 11, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 9, 7, 3]",True,True,True,False,True,False,True,True,False,True,False,True,True
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,False,False,True,False,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 9, 6, 6, 6, 7, 3]",True,True,True,False,True,True,False,False,False,False,False,False,False
+"[4, 5, 6, 6, 7, 7, 3]",True,True,True,False,True,False,False,True,False,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 9, 7, 3]",True,True,False,False,True,True,False,False,False,True,False,False,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 9, 7, 3]",True,True,False,False,True,True,False,False,False,True,False,False,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 6, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 6, 9, 7, 7, 3]",True,True,True,False,True,False,False,True,False,False,False,True,False
+"[4, 5, 5, 6, 9, 7, 3]",True,True,True,False,True,True,True,True,False,False,False,False,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,False,False,True,False,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 4, 5, 6, 7, 3]",True,True,True,True,True,False,False,True,True,True,True,False,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 9, 7, 7, 3]",True,True,False,False,True,False,False,False,False,True,False,False,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 6, 6, 7, 7, 3]",True,True,True,False,True,False,False,True,False,False,True,True,False
+"[4, 5, 7, 6, 9, 7, 3]",True,True,True,False,True,False,True,True,False,True,False,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 9, 6, 7, 3]",True,True,True,True,True,True,True,False,False,False,False,False,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 9, 7, 3]",True,True,False,False,True,True,False,False,False,True,False,False,True
+"[4, 9, 7, 3]",True,True,False,False,True,True,False,False,False,True,False,False,True
+"[4, 5, 5, 6, 9, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,False,False,False,False,False
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,False,False,True,False,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 5, 7, 3]",True,True,False,False,True,True,False,True,False,False,True,False,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 9, 6, 7, 3]",True,True,True,True,True,True,True,False,False,False,False,False,False
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 6, 6, 7, 6, 6, 7, 3]",True,True,True,False,True,False,False,True,False,False,True,True,False
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,False,False,True,False,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
+"[4, 5, 6, 6, 11, 7, 7, 3]",True,True,True,False,True,False,False,True,False,False,True,True,False
+"[4, 5, 6, 6, 9, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 5, 5, 9, 7, 3]",True,True,False,False,True,True,False,True,False,False,False,False,True
+"[4, 5, 6, 7, 7, 3, 3]",True,True,True,False,True,False,True,True,False,True,True,True,True
+"[4, 4, 5, 6, 7, 7, 3]",True,True,True,False,True,False,False,True,False,True,True,False,True
+"[4, 5, 6, 6, 9, 7, 3]",True,True,True,False,True,True,False,True,True,False,False,True,False
+"[4, 5, 6, 6, 11, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 5, 6, 9, 7, 3]",True,True,True,False,True,True,True,True,False,False,False,False,True
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 6, 6, 7, 3]",True,True,True,False,True,True,False,True,True,False,True,True,False
+"[4, 5, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,False,False,True,False,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 7, 3]",True,True,False,False,True,False,False,True,False,False,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 6, 7, 3]",True,True,True,True,True,True,True,True,True,True,True,True,True
+"[4, 5, 7, 3]",True,True,False,False,True,True,False,True,True,False,True,True,True
