@@ -1,0 +1,69 @@
+constraint,support,satisfaction
+"Chain Succession[O_Create Offer, O_Created]",1.0,0.7242290748898679
+Init[A_Create Application],1.0,1.0
+Absence2[A_Submitted],1.0,1.0
+Absence2[A_Pending],1.0,1.0
+Absence2[O_Accepted],1.0,1.0
+Absence2[A_Cancelled],1.0,0.9991189427312775
+"Alternate Succession[A_Concept, A_Accepted]",1.0,0.36916299559471366
+"Alternate Succession[A_Create Application, A_Concept]",1.0,0.8889867841409692
+"Alternate Response[A_Accepted, W_Complete application]",1.0,0.9973568281938326
+"Alternate Response[A_Create Application, W_Complete application]",1.0,1.0
+"Alternate Succession[A_Create Application, A_Accepted]",1.0,0.2643171806167401
+"Succession[A_Create Application, W_Complete application]",1.0,1.0
+Exactly1[A_Create Application],1.0,1.0
+Exactly1[A_Concept],1.0,0.892511013215859
+Exactly1[A_Accepted],1.0,0.2643171806167401
+"Co-Existence[O_Created, W_Complete application]",1.0,1.0
+"Chain Precedence[W_Call after offers, A_Complete]",0.9953,1.0
+"Alternate Succession[A_Concept, A_Complete]",0.9953,0.8757709251101321
+"Alternate Response[A_Create Application, W_Call after offers]",0.9953,0.986784140969163
+"Alternate Response[A_Accepted, W_Call after offers]",0.9953,0.9938325991189427
+"Alternate Response[A_Concept, W_Call after offers]",0.9953,0.9832599118942731
+"Alternate Succession[A_Create Application, A_Complete]",0.9953,0.986784140969163
+"Alternate Succession[A_Accepted, A_Complete]",0.9953,0.26519823788546254
+"Succession[W_Complete application, W_Call after offers]",0.9953,0.986784140969163
+"Succession[W_Complete application, A_Complete]",0.9953,0.986784140969163
+Exactly1[A_Complete],0.9953,0.986784140969163
+"Alternate Precedence[W_Complete application, A_Complete]",0.9953,1.0
+Existence3[W_Call after offers],0.9953,0.986784140969163
+"Chain Response[A_Complete, W_Call after offers]",0.9647,1.0
+"Succession[O_Sent , W_Call after offers]",0.9533,0.8458149779735683
+Absence2[O_Returned],0.9526,0.8951541850220265
+"Chain Response[A_Accepted, O_Create Offer]",0.951,0.9832599118942731
+Existence3[W_Complete application],0.9409000000000001,1.0
+"Chain Precedence[W_Complete application, A_Concept]",0.8924,0.9929515418502203
+Absence3[W_Handle leads],0.8844,0.9691629955947136
+Absence[O_Refused],0.8819,0.8740088105726872
+Absence[A_Denied],0.8809,1.0
+"Alternate Precedence[W_Complete application, O_Sent ]",0.8798999999999999,0.8748898678414097
+Absence3[A_Validating],0.8797,0.8484581497797357
+Absence2[O_Cancelled],0.8773000000000001,0.9110132158590308
+"Alternate Response[O_Sent , W_Call after offers]",0.8632,0.8616740088105727
+"Alternate Precedence[W_Complete application, O_Create Offer]",0.8606,0.9920704845814978
+"Alternate Precedence[W_Complete application, O_Created]",0.8606,0.8669603524229075
+"Alternate Succession[O_Create Offer, O_Sent ]",0.8286,0.7814977973568282
+"Alternate Response[O_Create Offer, W_Call after offers]",0.8206,0.9779735682819384
+"Alternate Response[O_Created, W_Call after offers]",0.8206,0.8308370044052863
+Absence2[A_Incomplete],0.8195,0.7709251101321586
+"Chain Succession[O_Created, O_Sent ]",0.8088,0.8643171806167401
+"Alternate Succession[A_Create Application, O_Sent ]",0.7685,0.7762114537444934
+"Alternate Succession[A_Accepted, O_Sent ]",0.7685,0.1973568281938326
+"Alternate Succession[A_Concept, O_Sent ]",0.7685,0.6784140969162996
+Exactly1[O_Sent ],0.7685,1.0
+"Chain Response[O_Sent , W_Complete application]",0.7652,0.7674008810572687
+"Alternate Succession[O_Sent , A_Complete]",0.7652,0.7638766519823789
+"Alternate Response[O_Created, W_Complete application]",0.7303000000000001,0.7533039647577092
+"Alternate Response[O_Create Offer, W_Complete application]",0.7303000000000001,0.9753303964757709
+"Alternate Succession[A_Create Application, O_Create Offer]",0.7284,0.9859030837004406
+"Alternate Succession[A_Concept, O_Created]",0.7284,0.6563876651982379
+"Alternate Succession[A_Accepted, O_Created]",0.7284,0.18766519823788547
+"Alternate Succession[A_Concept, O_Create Offer]",0.7284,0.8775330396475771
+"Alternate Succession[A_Create Application, O_Created]",0.7284,0.7524229074889868
+"Alternate Succession[A_Accepted, O_Create Offer]",0.7284,0.2607929515418502
+Exactly1[O_Create Offer],0.7284,1.0
+Exactly1[O_Created],0.7284,1.0
+"Alternate Succession[O_Created, A_Complete]",0.7243,0.7400881057268722
+"Alternate Succession[O_Create Offer, A_Complete]",0.7243,0.9744493392070485
+"Chain Response[A_Concept, W_Complete application]",0.7066,0.7348017621145374
+"Chain Precedence[W_Complete application, A_Accepted]",0.7061,0.73568281938326
