@@ -1,0 +1,163 @@
+Activities:
+1) administratief tarief       - eerste pol : Exists in 97.11% of traces in the log
+2) vervolgconsult poliklinisch : Exists in 83.81% of traces in the log
+3) ordertarief : Exists in 70.34% of traces in the log
+4) aanname laboratoriumonderzoek : Exists in 70.34% of traces in the log
+5) creatinine : Exists in 62.03% of traces in the log
+6) 1e consult poliklinisch : Exists in 61.50% of traces in the log
+7) leukocyten tellen elektronisch : Exists in 59.76% of traces in the log
+8) trombocyten tellen - elektronisch : Exists in 59.41% of traces in the log
+9) sgot - asat kinetisch : Exists in 58.71% of traces in the log
+10) sgpt - alat kinetisch : Exists in 58.71% of traces in the log
+11) ureum : Exists in 58.27% of traces in the log
+12) gammaglutamyltranspeptidase : Exists in 57.57% of traces in the log
+13) melkzuurdehydrogenase -ldh- kinetisch : Exists in 56.96% of traces in the log
+14) alkalische fosfatase -kinetisch- : Exists in 56.87% of traces in the log
+15) bilirubine - totaal : Exists in 56.43% of traces in the log
+16) albumine : Exists in 56.17% of traces in the log
+17) glucose : Exists in 56.17% of traces in the log
+18) calcium : Exists in 55.47% of traces in the log
+19) bloedgroep abo en rhesusfactor : Exists in 54.86% of traces in the log
+20) screening antistoffen erytrocyten : Exists in 54.86% of traces in the log
+21) rhesusfactor d - centrifugeermethode - e : Exists in 54.86% of traces in the log
+22) bilirubine -geconjugeerd : Exists in 53.28% of traces in the log
+23) 190021 klinische opname a002 : Exists in 52.58% of traces in the log
+24) telefonisch consult : Exists in 49.96% of traces in the log
+25) thorax : Exists in 45.41% of traces in the log
+26) ca-125 mbv meia : Exists in 40.07% of traces in the log
+27) differentiele telling automatisch : Exists in 32.98% of traces in the log
+28) cea - tumormarker mbv meia : Exists in 32.63% of traces in the log
+29) kruisproef volledig -drie methoden- : Exists in 30.80% of traces in the log
+30) ct abdomen : Exists in 30.53% of traces in the log
+31) histologisch onderzoek - grote resectiep : Exists in 28.08% of traces in the log
+32) squamous cell carcinoma mbv eia : Exists in 27.30% of traces in the log
+33) bacteriologisch onderzoek met kweek -nie : Exists in 25.46% of traces in the log
+34) urine onderzoek - kwalitatief : Exists in 24.06% of traces in the log
+35) o2-saturatie : Exists in 23.97% of traces in the log
+36) hematocriet mbv centrifuge : Exists in 23.01% of traces in the log
+37) immunopathologisch onderzoek : Exists in 22.13% of traces in the log
+38) mri abdomen : Exists in 21.78% of traces in the log
+39) haemoglobine foto-electrisch - spoed : Exists in 21.61% of traces in the log
+40) histologisch onderzoek - biopten nno : Exists in 20.47% of traces in the log
+41) bicarbonaat : Exists in 20.03% of traces in the log
+42) gefiltreerd erytrocytenconcentraat : Exists in 19.42% of traces in the log
+43) actuele ph - pco2 - stand.bicarbonaat : Exists in 19.25% of traces in the log
+44) coupe ter inzage : Exists in 19.07% of traces in the log
+45) crp c-reactief proteine : Exists in 18.90% of traces in the log
+46) teletherapie - megavolt fotonen bestrali : Exists in 18.64% of traces in the log
+47) verlosk.-gynaec. korte kaart kosten-out : Exists in 18.37% of traces in the log
+48) co-hb kwn. : Exists in 17.50% of traces in the log
+49) methemoglobine - sulfhemoglobine elk : Exists in 17.50% of traces in the log
+50) kalium vlamfotometrisch - spoed : Exists in 17.41% of traces in the log
+51) natrium - vlamfotometrisch - spoed : Exists in 17.24% of traces in the log
+52) e.c.g.      - elektrocardiografie : Exists in 17.06% of traces in the log
+53) hepatitis-b surface antigeen confirmatie : Exists in 16.62% of traces in the log
+54) sediment : Exists in 16.36% of traces in the log
+55) resistentiebepalingen - 5 bepalingen : Exists in 15.66% of traces in the log
+56) trombocyten tellen - spoed : Exists in 15.14% of traces in the log
+57) leucocyten tellen -electronisch- spoed : Exists in 14.87% of traces in the log
+58) behandeltijd - eenheid t3 - megavolt : Exists in 14.61% of traces in the log
+59) dagverpleging - alle spec.beh.kind.-rev. : Exists in 14.52% of traces in the log
+60) 190035 dagverpleging    a007 : Exists in 14.52% of traces in the log
+61) calcium - spoed : Exists in 14.09% of traces in the log
+62) microscopisch onderzoek - gekleurd en on : Exists in 14.09% of traces in the log
+63) vagina      - toucher onder anesthesie : Exists in 13.74% of traces in the log
+64) glucose - spoed : Exists in 13.65% of traces in the log
+65) verlosk.-gynaec.   jaarkaart kosten-out : Exists in 13.21% of traces in the log
+66) 1e consult      bezoek : Exists in 12.60% of traces in the log
+67) brachytherapie - interstitieel - intensi : Exists in 12.42% of traces in the log
+68) bloedgroepantigenen andere dan abo-rhesu : Exists in 12.16% of traces in the log
+69) cde fenotypering : Exists in 12.07% of traces in the log
+70) melkzuur enzymatisch - spoed : Exists in 12.07% of traces in the log
+71) magnesium  -aas : Exists in 11.81% of traces in the log
+72) ct thorax : Exists in 11.55% of traces in the log
+73) cefalinetijd - coagulatie : Exists in 11.46% of traces in the log
+74) cytologisch onderzoek - ascites - : Exists in 11.46% of traces in the log
+75) melkzuur enzymatisch : Exists in 11.02% of traces in the log
+76) protrombinetijd : Exists in 10.85% of traces in the log
+77) simulator - gebruik voor aanvang megavol : Exists in 10.67% of traces in the log
+78) dieet nno : Exists in 10.67% of traces in the log
+79) echografie  - genitalia interna : Exists in 10.59% of traces in the log
+Constraints:
+1) In 97.11% of traces in the log, administratief tarief       - eerste pol occurs at least once
+2) In 94.66% of traces in the log, cea - tumormarker mbv meia occurs at most once
+3) In 90.46% of traces in the log, thorax occurs at most once
+4) In 89.41% of traces in the log, echografie  - genitalia interna does not occur
+5) In 89.33% of traces in the log, simulator - gebruik voor aanvang megavol does not occur
+6) In 89.33% of traces in the log, dieet nno does not occur
+7) In 89.15% of traces in the log, protrombinetijd does not occur
+8) In 88.98% of traces in the log, melkzuur enzymatisch does not occur
+9) In 88.54% of traces in the log, cefalinetijd - coagulatie does not occur
+10) In 88.54% of traces in the log, cytologisch onderzoek - ascites - does not occur
+11) In 88.45% of traces in the log, ct thorax does not occur
+12) In 88.19% of traces in the log, magnesium  -aas does not occur
+13) In 88.01% of traces in the log, ct abdomen occurs at most once
+14) In 87.93% of traces in the log, cde fenotypering does not occur
+15) In 87.93% of traces in the log, melkzuur enzymatisch - spoed does not occur
+16) In 87.84% of traces in the log, bloedgroepantigenen andere dan abo-rhesu does not occur
+17) In 87.58% of traces in the log, brachytherapie - interstitieel - intensi does not occur
+18) In 87.40% of traces in the log, 1e consult      bezoek does not occur
+19) In 86.88% of traces in the log, bilirubine -geconjugeerd occurs at most once
+20) In 86.79% of traces in the log, verlosk.-gynaec.   jaarkaart kosten-out does not occur
+21) In 86.35% of traces in the log, glucose - spoed does not occur
+22) In 86.26% of traces in the log, vagina      - toucher onder anesthesie does not occur
+23) In 85.91% of traces in the log, microscopisch onderzoek - gekleurd en on does not occur
+24) In 85.91% of traces in the log, calcium - spoed does not occur
+25) In 85.48% of traces in the log, 190035 dagverpleging    a007 does not occur
+26) In 85.48% of traces in the log, dagverpleging - alle spec.beh.kind.-rev. does not occur
+27) In 85.39% of traces in the log, behandeltijd - eenheid t3 - megavolt does not occur
+28) In 85.13% of traces in the log, leucocyten tellen -electronisch- spoed does not occur
+29) In 84.86% of traces in the log, trombocyten tellen - spoed does not occur
+30) In 84.34% of traces in the log, resistentiebepalingen - 5 bepalingen does not occur
+31) In 84.08% of traces in the log, kruisproef volledig -drie methoden- occurs at most twice
+32) In 84.08% of traces in the log, ca-125 mbv meia occurs at most once
+33) In 83.81% of traces in the log, vervolgconsult poliklinisch occurs at least once
+34) In 83.64% of traces in the log, sediment does not occur
+35) In 83.38% of traces in the log, hepatitis-b surface antigeen confirmatie does not occur
+36) In 83.38% of traces in the log, screening antistoffen erytrocyten occurs at most twice
+37) In 83.11% of traces in the log, bloedgroep abo en rhesusfactor occurs at most twice
+38) In 83.11% of traces in the log, rhesusfactor d - centrifugeermethode - e occurs at most twice
+39) In 82.94% of traces in the log, e.c.g.      - elektrocardiografie does not occur
+40) In 82.76% of traces in the log, natrium - vlamfotometrisch - spoed does not occur
+41) In 82.59% of traces in the log, kalium vlamfotometrisch - spoed does not occur
+42) In 82.50% of traces in the log, co-hb kwn. does not occur
+43) In 82.50% of traces in the log, methemoglobine - sulfhemoglobine elk does not occur
+44) In 82.50% of traces in the log, bilirubine - totaal occurs at most once
+45) In 82.06% of traces in the log, administratief tarief       - eerste pol and vervolgconsult poliklinisch occur together
+46) In 81.63% of traces in the log, verlosk.-gynaec. korte kaart kosten-out does not occur
+47) In 81.36% of traces in the log, teletherapie - megavolt fotonen bestrali does not occur
+48) In 81.10% of traces in the log, crp c-reactief proteine does not occur
+49) In 80.93% of traces in the log, coupe ter inzage does not occur
+50) In 80.75% of traces in the log, albumine occurs at most once
+51) In 80.75% of traces in the log, actuele ph - pco2 - stand.bicarbonaat does not occur
+52) In 80.75% of traces in the log, melkzuurdehydrogenase -ldh- kinetisch occurs at most once
+53) In 80.58% of traces in the log, gefiltreerd erytrocytenconcentraat does not occur
+54) In 79.97% of traces in the log, bicarbonaat does not occur
+55) In 79.53% of traces in the log, histologisch onderzoek - biopten nno does not occur
+56) In 79.44% of traces in the log, gammaglutamyltranspeptidase occurs at most once
+57) In 79.27% of traces in the log, alkalische fosfatase -kinetisch- occurs at most once
+58) In 78.48% of traces in the log, differentiele telling automatisch occurs at most once
+59) In 78.39% of traces in the log, haemoglobine foto-electrisch - spoed does not occur
+60) In 78.22% of traces in the log, mri abdomen does not occur
+61) In 77.87% of traces in the log, immunopathologisch onderzoek does not occur
+62) In 77.78% of traces in the log, 1e consult poliklinisch occurs at most once
+63) In 77.52% of traces in the log, sgpt - alat kinetisch occurs at most once
+64) In 77.52% of traces in the log, sgot - asat kinetisch occurs at most once
+65) In 77.34% of traces in the log, trombocyten tellen - elektronisch occurs at most twice
+66) In 76.99% of traces in the log, hematocriet mbv centrifuge does not occur
+67) In 76.47% of traces in the log, leukocyten tellen elektronisch occurs at most twice
+68) In 76.03% of traces in the log, o2-saturatie does not occur
+69) In 75.94% of traces in the log, urine onderzoek - kwalitatief does not occur
+70) In 75.77% of traces in the log, ureum occurs at most once
+71) In 75.59% of traces in the log, calcium occurs at most once
+72) In 74.54% of traces in the log, bacteriologisch onderzoek met kweek -nie does not occur
+73) In 74.45% of traces in the log, telefonisch consult occurs at most once
+74) In 74.28% of traces in the log, glucose occurs at most once
+75) In 73.40% of traces in the log, administratief tarief       - eerste pol occurs at most twice
+76) In 72.70% of traces in the log, squamous cell carcinoma mbv eia does not occur
+77) In 71.92% of traces in the log, histologisch onderzoek - grote resectiep does not occur
+78) In 71.39% of traces in the log, 190021 klinische opname a002 occurs at most once
+79) In 70.95% of traces in the log, creatinine occurs at most twice
+80) In 70.34% of traces in the log, ordertarief occurs at least once
+81) In 70.34% of traces in the log, aanname laboratoriumonderzoek occurs at least once
+82) In 70.34% of traces in the log, aanname laboratoriumonderzoek occurs if and only if it is followed by ordertarief

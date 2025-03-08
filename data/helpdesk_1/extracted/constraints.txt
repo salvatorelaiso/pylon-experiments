@@ -1,0 +1,9 @@
+Chain Response[Assign seriousness, Take in charge ticket] - Support: NaN%
+Exactly1[Assign seriousness] - Support: NaN%
+Exactly1[Insert ticket] - Support: NaN%
+Alternate Response[Insert ticket, Take in charge ticket] - Support: NaN%
+Succession[Take in charge ticket, Resolve ticket] - Support: NaN%
+Succession[Assign seriousness, Take in charge ticket] - Support: NaN%
+Chain Succession[Insert ticket, Assign seriousness] - Support: NaN%
+Init[Insert ticket] - Support: NaN%
+Existence[Take in charge ticket] - Support: NaN%
