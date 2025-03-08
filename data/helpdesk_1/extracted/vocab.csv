@@ -1,0 +1,18 @@
+0,<pad>
+1,<unk>
+2,<sos>
+3,<eos>
+4,Assign seriousness
+5,Take in charge ticket
+6,Resolve ticket
+7,Closed
+8,Require upgrade
+9,Wait
+10,Insert ticket
+11,Create SW anomaly
+12,Schedule intervention
+13,RESOLVED
+14,INVALID
+15,VERIFIED
+16,Resolve SW anomaly
+17,DUPLICATE

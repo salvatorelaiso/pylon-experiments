@@ -1,0 +1,9 @@
+Chain Response[Assign seriousness, Take in charge ticket] | | |
+Exactly1[Assign seriousness] | |
+Exactly1[Insert ticket] | |
+Alternate Response[Insert ticket, Take in charge ticket] | | |
+Succession[Take in charge ticket, Resolve ticket] | | |
+Succession[Assign seriousness, Take in charge ticket] | | |
+Chain Succession[Insert ticket, Assign seriousness] | | |
+Init[Insert ticket] | |
+Existence[Take in charge ticket] | |
