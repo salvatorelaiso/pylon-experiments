@@ -26,14 +26,21 @@ def main(args: Args):
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
 
-    epoch_offset = 0
-
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+    epoch_offset = 0
+
+    if args.base_model:
+        model = torch.load(args.base_model, weights_only=False).to(device)
+        vocab: Vocab = model.vocab
+        epoch_offset = int(args.base_model.stem.split("_")[-1])
+        print(f"Loaded model from {args.base_model} with {epoch_offset} epochs.")
+    else:
+        model = NextActivityPredictor(args=args.model_args).to(device)
+        vocab: Vocab = Vocab.load(args.model_args.vocab_path)
+        print("Model:", model)
+
     loaders = Loader(args=args.loader_args).get_loaders()
-    vocab: Vocab = Vocab.load(args.model_args.vocab_path)
-    model = NextActivityPredictor(args=args.model_args).to(device)
-    print("Model:", model)
 
     constraints = [constraint_from_string(c, vocab) for c in args.constraints]
     print("Constraints:", constraints)
@@ -66,7 +73,8 @@ def main(args: Args):
         test_loader=loaders["test"],
         optimizer=torch.optim.Adam(model.parameters(), lr=args.learning_rate),
         criterion=torch.nn.CrossEntropyLoss(),
-        constraints=constraints,
+        constraints=[c[0] for c in constraints],
+        constraints_multipliers=[c[1] for c in constraints],
         constraints_multiplier=args.constraints_multiplier,
         metrics={
             "accuracy": torchmetrics.Accuracy(
@@ -74,8 +82,8 @@ def main(args: Args):
             ).to(device),
         },
         model=model,
+        ignore_task_loss=args.ignore_task_loss,
         device=device,
-        epoch_offset=epoch_offset,
     )
     end_time = time.perf_counter()
     with open(run_path / "elapsed_time.txt", "w") as file:
@@ -83,7 +91,7 @@ def main(args: Args):
             f"{int(end_time - start_time)} seconds ({(end_time - start_time) / 60:.2f} minutes)"
         )
 
-    torch.save(model.state_dict(), run_path / f"model.epoch_{args.epochs}.pth")
+    torch.save(model, run_path / f"model.epoch_{args.epochs}.pth")
     torch.save(
         output.best_acc_model,
         run_path / f"model.epoch_{output.best_acc_epoch}.best_val_acc.pth",
@@ -184,6 +192,18 @@ def parse_args():
         help="Training multiplier for the constraints loss. (default: 1.0)",
         default=1.0,
     )
+    argparser.add_argument(
+        "--base-model",
+        type=str,
+        help="Path to a base model to start training from. (default: None)",
+        default=None,
+        required=False,
+    )
+    argparser.add_argument(
+        "--ignore-task-loss",
+        help="Train the model without the task loss. (default: False)",
+        action="store_true",
+    )
 
     args = argparser.parse_args()
     cwd = pathlib.Path.cwd()
@@ -202,6 +222,8 @@ def parse_args():
             vocab_path=cwd / args.path / ".." / "extracted" / "vocab.pkl",
         ),
         constraints=args.constraints,
+        base_model=args.base_model,
+        ignore_task_loss=args.ignore_task_loss,
     )
 
 

@@ -48,8 +48,8 @@ def train(
     constraints_multiplier: float,
     metrics: dict[str, torchmetrics.Metric],
     model: NextActivityPredictor,
+    ignore_task_loss: bool,
     device: torch.device,
-    epoch_offset: int = 0,
 ):
     history = {"train": {}, "val": {}}
 
@@ -84,6 +84,7 @@ def train(
             metrics=metrics,
             device=device,
             dataloader=train_loader,
+            ignore_task_loss=ignore_task_loss,
         )
 
         val_results = train_with_constraints_epoch(

@@ -18,10 +18,10 @@ def main(args: Args):
         df, case_id="case", activity_key="activity", timestamp_key="timestamp"
     )
     print(pm4py.get_start_activities(event_log))
-    xes_exporter.apply(event_log, "output.xes")
+    xes_exporter.apply(event_log, str(args.path.with_suffix(".xes")))
 
-    with open("output.xes", "rb") as f_in:
-        with gzip.open("output.xes.gz", "wb") as f_out:
+    with open(args.path.with_suffix(".xes").resolve(), "rb") as f_in:
+        with gzip.open(args.path.with_suffix(".xes.gz"), "wb") as f_out:
             f_out.writelines(f_in)
 
 

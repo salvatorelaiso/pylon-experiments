@@ -17,6 +17,8 @@ class Args:
     loader_args: LoaderArgs
     model_args: ModelArgs
     constraints: list[str] = Field(default_factory=list)
+    base_model: pathlib.Path | None = None
+    ignore_task_loss: bool = False
 
     def dump_args(self, path: str | os.PathLike | pathlib.Path) -> None:
         with open(path, "w") as f:
@@ -34,12 +36,16 @@ class Args:
                     "dropout": self.model_args.dropout,
                 },
                 "constraints": self.constraints,
+                "ignore_task_loss": self.ignore_task_loss,
             }
             if self.constraints:
                 data["constraints_multiplier"] = self.constraints_multiplier
+            if self.base_model:
+                data["base_model"] = str(self.base_model)
             json.dump(data, f, indent=4)
 
     def print_args(self) -> None:
+        print(f"Base model: {self.base_model}")
         print(f"Seed: {self.seed}")
         print(f"Epochs: {self.epochs}")
         print(f"Learning rate: {self.learning_rate}")

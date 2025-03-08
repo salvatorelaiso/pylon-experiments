@@ -28,6 +28,7 @@ def train_with_constraints_epoch(
     device: torch.device,
     dataloader: DataLoader,
     mode: Literal["train", "val", "test"] = "train",
+    ignore_task_loss: bool = False,
     constraints_multiplier: float | None = None,
 ):
     loader = tqdm(
@@ -50,25 +51,26 @@ def train_with_constraints_epoch(
     for traces, lengths in loader:
         max_length = lengths[0]
 
-        for (
-            prefixes,
-            next_activity,
-            prefixes_lengths,
-        ) in TraceDataset.incremental_length_prefixes(
-            traces=traces, max_length=max_length
-        ):
-            prefixes, next_activity = prefixes.to(device), next_activity.to(device)
+        if not ignore_task_loss:
+            for (
+                prefixes,
+                next_activity,
+                prefixes_lengths,
+            ) in TraceDataset.incremental_length_prefixes(
+                traces=traces, max_length=max_length
+            ):
+                prefixes, next_activity = prefixes.to(device), next_activity.to(device)
 
-            pred = model(prefixes, prefixes_lengths)
-            loss = criterion(pred, next_activity)
-            total_loss += loss.item()
-            if train:
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
+                pred = model(prefixes, prefixes_lengths)
+                loss = criterion(pred, next_activity)
+                total_loss += loss.item()
+                if train:
+                    optimizer.zero_grad()
+                    loss.backward()
+                    optimizer.step()
 
-            for metric in metrics.values():
-                metric.update(pred, next_activity)
+                for metric in metrics.values():
+                    metric.update(pred, next_activity)
 
         # Constraint loss
         if constraints:

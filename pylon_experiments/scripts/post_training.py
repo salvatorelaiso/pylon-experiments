@@ -16,6 +16,7 @@ from pylon_experiments.data.loader import Loader
 from pylon_experiments.model.metrics.damerau_levehenstein import (
     DamerauLevenshteinDistance,
     NormalizedDamerauLevenshteinDistance,
+    WeightedNormalizedDamerauLevenshteinDistance,
 )
 from pylon_experiments.model.training.constraints.constraint import (
     constraint_from_string,
@@ -102,6 +103,7 @@ def main(args: Args):
             ).to(device),
             "dld": DamerauLevenshteinDistance(),
             "norm_dld": NormalizedDamerauLevenshteinDistance(),
+            "weighted_norm_dld": WeightedNormalizedDamerauLevenshteinDistance(),
         }
 
         output_path = model_path.parent / model_path.stem
