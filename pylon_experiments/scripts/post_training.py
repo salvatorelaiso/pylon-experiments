@@ -110,6 +110,7 @@ def main(args: Args):
             model=model,
             criterion=torch.nn.CrossEntropyLoss(),
             constraints=[],
+            constraints_multiplier=[],
             metrics=metrics,
             device=device,
             loader=test_loader,
@@ -130,7 +131,7 @@ def main(args: Args):
             for line in lines:
                 constraint_str, constraint_support = line.split(" - Support: ")
 
-                constraint = constraint_from_string(constraint_str, model.vocab)
+                constraint, _ = constraint_from_string(constraint_str, model.vocab)
                 constraint_type_str, remaining = constraint_str.split("[")
                 constraint_activities = remaining.removesuffix("]").split(",")
                 constraint_activities = [

@@ -59,7 +59,7 @@ existence_constraints_mappings: dict[
 relation_constraints_mappings: dict[
     str, tuple[type[RelationConstraintSettings], type[DeclareConstraintSettings]]
 ] = {
-    "COEXISTENCE": (CoExistenceConstraint, RelationConstraintSettings),
+    "CO-EXISTENCE": (CoExistenceConstraint, RelationConstraintSettings),
     "RESPONDED EXISTENCE": (RespondedExistenceConstraint, RelationConstraintSettings),
     "PRECEDENCE": (PrecedenceConstraint, RelationConstraintSettings),
     "ALTERNATE PRECEDENCE": (AlternatePrecedenceConstraint, RelationConstraintSettings),
@@ -84,7 +84,17 @@ constraint_string_mappings: dict[
 }
 
 
-def constraint_from_string(string: str, vocab: Vocab) -> DeclareConstraint:
+def constraint_from_string(
+    string: str, vocab: Vocab
+) -> tuple[DeclareConstraint, float]:
+    string, *multiplier_str = string.split("*")
+    if len(multiplier_str) == 0:
+        multiplier = 1.0
+    elif len(multiplier_str) == 1:
+        multiplier = float(multiplier_str[0])
+    else:
+        raise ValueError("Invalid multiplier")
+
     constraint_str = string.split("[")[0].upper()
     # If `constraint_str` ends with a number, e.g. "ABSCENCE2", extract the number and remove it from the string
     count = None
@@ -120,6 +130,9 @@ def constraint_from_string(string: str, vocab: Vocab) -> DeclareConstraint:
             else settings_type(a=activities[0], b=activities[1], count=count)
         )
 
-    return constraint_type(
-        settings=settings, solver=WeightedSamplingSolver(num_samples=100)
+    return (
+        constraint_type(
+            settings=settings, solver=WeightedSamplingSolver(num_samples=100)
+        ),
+        multiplier,
     )

@@ -23,6 +23,7 @@ def train_with_constraints_epoch(
     optimizer: torch.optim.Optimizer | None,
     criterion: torch.nn.Module,
     constraints: list[DeclareConstraint],
+    constraints_multipliers: list[DeclareConstraint],
     metrics: dict[str, torchmetrics.Metric],
     device: torch.device,
     dataloader: DataLoader,
@@ -94,9 +95,12 @@ def train_with_constraints_epoch(
             )
 
             constraint_losses_tensors = {}
-            for constraint in constraints:
-                constraint_loss = constraint(
-                    padded_batch_logits,
+            for constraint, multiplier in zip(constraints, constraints_multipliers):
+                constraint_loss = (
+                    constraint(
+                        padded_batch_logits,
+                    )
+                    * multiplier
                 )
                 constraint_losses[str(constraint)] += constraint_loss.item()
                 constraint_losses_tensors[str(constraint)] = constraint_loss
@@ -128,6 +132,7 @@ def test(
     model: NextActivityPredictor,
     criterion: torch.nn.Module,
     constraints: list[DeclareConstraint],
+    constraints_multiplier: list[DeclareConstraint],
     metrics: dict[str, torchmetrics.Metric],
     device: torch.device,
     loader: DataLoader,
@@ -194,9 +199,12 @@ def test(
         predicted_traces.append(padded_batch_logits.argmax(dim=-1).T)
 
         constraint_losses_tensors = {}
-        for constraint in constraints:
-            constraint_loss = constraint(
-                padded_batch_logits,
+        for constraint, multiplier in zip(constraints, constraints_multiplier):
+            constraint_loss = (
+                constraint(
+                    padded_batch_logits,
+                )
+                * multiplier
             )
             constraint_losses[str(constraint)] += constraint_loss.item()
             constraint_losses_tensors[str(constraint)] = constraint_loss
