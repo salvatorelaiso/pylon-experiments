@@ -4,6 +4,7 @@ from itertools import zip_longest
 from typing import Literal
 
 import numpy as np
+import pandas as pd
 import torch
 import torchmetrics
 from declare4pylon.constraint import DeclareConstraint
@@ -131,10 +132,9 @@ def train_with_constraints_epoch(
 
 
 def test(
+    *,
     model: NextActivityPredictor,
     criterion: torch.nn.Module,
-    constraints: list[DeclareConstraint],
-    constraints_multiplier: list[DeclareConstraint],
     metrics: dict[str, torchmetrics.Metric],
     device: torch.device,
     loader: DataLoader,
@@ -150,8 +150,6 @@ def test(
 
     total_loss = 0
     total_samples = 0
-
-    constraint_losses = {str(constraint): 0 for constraint in constraints}
 
     test_prefixes = []
     test_predictions = []
@@ -200,28 +198,16 @@ def test(
 
         predicted_traces.append(padded_batch_logits.argmax(dim=-1).T)
 
-        constraint_losses_tensors = {}
-        for constraint, multiplier in zip(constraints, constraints_multiplier):
-            constraint_loss = (
-                constraint(
-                    padded_batch_logits,
-                )
-                * multiplier
-            )
-            constraint_losses[str(constraint)] += constraint_loss.item()
-            constraint_losses_tensors[str(constraint)] = constraint_loss
-
         total_samples += traces.size(0)
 
         loader.set_postfix(
             loss=total_loss / total_samples,
             **{name: metric.compute().item() for name, metric in metrics.items()},
-            **{k: v / total_samples for k, v in constraint_losses.items()},
         )
 
     output_path.mkdir(parents=True, exist_ok=True)
-    with open(output_path / "predictions.csv", "w") as f:
-        f.write("Correct,Prefix,Prediction,Next Activity\n")
+    with open(output_path / "next_activity.csv", "w") as f:
+        f.write("correct,prefix,y_hat,y\n")
         for (
             batch_test_prefixes,
             batch_test_predictions,
@@ -231,10 +217,11 @@ def test(
                 batch_test_prefixes, batch_test_predictions, batch_test_next_activities
             ):
                 f.write(
-                    f"{prediction == next_activity},{np.array2string(prefix, max_line_width=np.inf)},{prediction},{next_activity}\n"
+                    f"{int(prediction == next_activity)},{np.array2string(prefix, max_line_width=np.inf)},{prediction},{next_activity}\n"
                 )
 
-    with open(output_path / "predicted_traces.txt", "w") as f:
+    with open(output_path / "generated_traces.csv", "w") as f:
+        f.write("generated_trace\n")
         for batch_predicted_traces in predicted_traces:
             for predicted_trace in batch_predicted_traces:
                 f.write(
@@ -248,5 +235,76 @@ def test(
     epoch_results = {name: metric.compute().item() for name, metric in metrics.items()}
     for metric in metrics.values():
         metric.reset()
-    constraints_results = {k: v / total_samples for k, v in constraint_losses.items()}
-    return {"loss": total_loss / total_samples, **epoch_results, **constraints_results}
+    return {"loss": total_loss / total_samples, **epoch_results}
+
+
+def test_generation(
+    *,
+    model: NextActivityPredictor,
+    loader: DataLoader,
+    device: torch.device,
+    output: str | os.PathLike | pathlib.Path,
+    fixed_length: int | None = None,
+):
+    MAX_PREDICTIONS_LENGTH = 1000
+
+    loader = tqdm(
+        loader,
+        unit="batch",
+        desc=f"Testing",
+        bar_format="{l_bar}{bar:10}{r_bar}{bar:-10b}",
+    )
+    model.eval()
+
+    records: list[tuple[torch.Tensor, torch.Tensor, torch.Tensor]] = []
+
+    for traces, lengths in loader:
+        max_length = lengths[0] if fixed_length is None else fixed_length + 1
+        min_length = 1 if fixed_length is None else fixed_length
+        for (
+            prefixes,
+            _,
+            prefixes_lengths,
+            traces,
+        ) in TraceDataset.incremental_length_prefixes(
+            traces=traces,
+            max_length=max_length,
+            min_length=min_length,
+            with_traces=True,
+        ):
+            prefixes = prefixes.to(device)
+
+            for prefix, prefix_length, trace in zip(prefixes, prefixes_lengths, traces):
+                suffix = []
+
+                x = prefix.unsqueeze(0)
+                x_length = prefix_length.unsqueeze(0)
+
+                for __ in range(MAX_PREDICTIONS_LENGTH):
+                    logits = model(x, x_length)
+                    y_hat = logits.argmax(dim=-1)
+                    suffix.append(y_hat)
+                    if (
+                        y_hat == model.vocab.activity2idx["<eos>"]
+                        or y_hat == model.vocab.activity2idx["<pad>"]
+                    ):
+                        break
+                    x = torch.cat([x, y_hat.unsqueeze(0)], dim=1)
+                    x_length += 1
+
+                # Remove padding (if any) from the trace
+                zero_indices = (trace == 0).nonzero(as_tuple=True)[0]
+                if len(zero_indices) > 0:  # If there is at least one zero
+                    first_zero_index = zero_indices[0]
+                    trace = trace[:first_zero_index]  # Keep only the left part
+
+                records.append((prefix, torch.cat(suffix), trace))
+
+    output.parent.mkdir(parents=True, exist_ok=True)
+    results = pd.DataFrame(
+        records, columns=["prefix", "generated_suffix", "test_trace"]
+    )
+    results = results.map(lambda x: x.cpu().numpy())
+    np.set_printoptions(threshold=np.inf)
+    np.set_printoptions(linewidth=np.inf)
+    results.to_csv(output, index=False)

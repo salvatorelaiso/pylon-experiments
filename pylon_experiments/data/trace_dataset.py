@@ -38,17 +38,38 @@ class TraceDataset(Dataset):
         return trace, torch.stack(lengths)
 
     @staticmethod
-    def incremental_length_prefixes(traces: torch.Tensor, max_length: int):
-        for length in range(1, max_length):
-            yield TraceDataset.fixed_length_prefixes(traces, length)
+    def incremental_length_prefixes(
+        traces: torch.Tensor,
+        max_length: int,
+        min_length: int = 1,
+        with_traces: bool = False,
+    ):
+        for length in range(min_length, max_length):
+            result = TraceDataset.fixed_length_prefixes(traces, length, with_traces)
+            if len(result[0]) > 0:
+                yield result
 
     @staticmethod
-    def fixed_length_prefixes(traces: torch.Tensor, length: int):
-        prefixes = traces[:, :length].clone().detach()
-        targets = traces[:, length].clone().detach()
-        lengths = torch.tensor([length] * len(traces))
-        mask = targets != 0
-        return prefixes[mask], targets[mask], lengths[mask]
+    def fixed_length_prefixes(
+        traces: torch.Tensor, length: int, with_traces: bool = False
+    ):
+        try:
+            prefixes = traces[:, :length].clone().detach()
+            targets = traces[:, length].clone().detach()
+            lengths = torch.tensor([length] * len(traces))
+            mask = targets != 0
+            if with_traces:
+                return prefixes[mask], targets[mask], lengths[mask], traces[mask]
+            return prefixes[mask], targets[mask], lengths[mask]
+        except IndexError:
+            if with_traces:
+                return (
+                    torch.tensor([]),
+                    torch.tensor([]),
+                    torch.tensor([]),
+                    torch.tensor([]),
+                )
+            return torch.tensor([]), torch.tensor([]), torch.tensor([])
 
     def save(self, path: str | os.PathLike | pathlib.Path):
         with open(path, "wb") as f:

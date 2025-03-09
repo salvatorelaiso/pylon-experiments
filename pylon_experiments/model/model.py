@@ -22,7 +22,7 @@ class NextActivityPredictor(nn.Module):
     def __init__(self, args: Args):
         super().__init__()
 
-        self.vocab = Vocab.load(args.vocab_path)
+        self.vocab: Vocab = Vocab.load(args.vocab_path)
 
         num_classes = len(self.vocab)
         padding_index = self.vocab["<pad>"]
