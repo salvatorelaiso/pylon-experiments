@@ -21,7 +21,7 @@ def df_to_sorted_event_log(df: pd.DataFrame) -> pm4py.objects.log.obj.EventLog:
 
 
 def event_log_to_traces_dict(
-    log: pm4py.objects.log.obj.EventLog, trace_percentage: float
+    log: pm4py.objects.log.obj.EventLog, trace_percentage: float = 1.0
 ) -> dict[any, list[str]]:
     """
     Convert an event log to a dictionary of traces.
@@ -60,10 +60,15 @@ def main(args: Args):
     vocabulary = generate_vocab(df["concept:name"])
     event_log = df_to_sorted_event_log(df)
 
+    traces = event_log_to_traces_dict(event_log)
+    with open(args.path / "extracted" / "info.csv", "w") as f:
+        f.write(f"n_traces,max_len\n")
+        f.write(f"{len(traces)},{max([len(i) for i in traces.values()])}\n")
+
     for trace_percentage in [0.2, 0.4, 0.6, 0.8, 1.0]:
         print(f"Extracting traces with {trace_percentage * 100}% of the log...")
 
-        traces = event_log_to_traces_dict(event_log, trace_percentage)
+        traces = event_log_to_traces_dict(event_log, trace_percentage=trace_percentage)
 
         extracted_path = args.path / f"{trace_percentage:.0%}" / "extracted"
         datasets_path = args.path / f"{trace_percentage:.0%}" / "datasets"
@@ -78,6 +83,10 @@ def main(args: Args):
             for trace_id, trace_activities in traces.items():
                 trace_activities = vocabulary.to_idxs(trace_activities)
                 f.write(trace_id + ";" + ",".join(map(str, trace_activities)) + "\n")
+        traces_df = pd.read_csv(extracted_path / "traces.csv", sep=";")
+        with open(extracted_path / "info.csv", "w") as f:
+            f.write(f"n_traces,max_len\n")
+            f.write(f"{len(traces)},{max([len(i) for i in traces.values()])}\n")
 
         # Split the dataset into training, validation, and test sets based on the trace ids
         print("Splitting dataset...")
