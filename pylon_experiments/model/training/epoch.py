@@ -245,9 +245,8 @@ def test_generation(
     device: torch.device,
     output: str | os.PathLike | pathlib.Path,
     fixed_length: int | None = None,
+    max_predictions_length: int = 200,
 ):
-    MAX_PREDICTIONS_LENGTH = 1000
-
     loader = tqdm(
         loader,
         unit="batch",
@@ -277,10 +276,10 @@ def test_generation(
             for prefix, prefix_length, trace in zip(prefixes, prefixes_lengths, traces):
                 suffix = []
 
-                x = prefix.unsqueeze(0)
+                x = prefix.unsqueeze(0).to(device)
                 x_length = prefix_length.unsqueeze(0)
 
-                for __ in range(MAX_PREDICTIONS_LENGTH):
+                for __ in range(max_predictions_length):
                     logits = model(x, x_length)
                     y_hat = logits.argmax(dim=-1)
                     suffix.append(y_hat)

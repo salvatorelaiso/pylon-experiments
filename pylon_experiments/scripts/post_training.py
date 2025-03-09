@@ -222,6 +222,11 @@ def main(args: Args):
                 constraints[constraint_str] = (constraint, support)
         print(constraints)
 
+        max_trace_length = pd.read_csv(
+            pathlib.Path("./data/") / dataset / "extracted" / "info.csv"
+        )["max_len"][0]
+        max_predictions_length = int(max_trace_length * 1.1)
+
         # Create the output directory for the test results
         output_path = model_path.parent / model_path.stem
         output_path.mkdir(parents=True, exist_ok=True)
@@ -232,6 +237,7 @@ def main(args: Args):
             device=device,
             loader=test_loader,
             output=output_path / "generation" / "predictions.csv",
+            max_predictions_length=max_predictions_length,
         )
         evaluate_constraints_on_predictions(
             predictions_file=output_path / "generation" / "predictions.csv",
