@@ -1,0 +1,10 @@
+constraint,support,satisfaction
+"Chain Response[Assign seriousness(4), Take in charge ticket(5)]",,0.7597840755735492
+Exactly1[Assign seriousness(4)],,0.8052181736392263
+Exactly1[Insert ticket(10)],,0.2573099415204678
+"Alternate Response[Insert ticket(10), Take in charge ticket(5)]",,0.7512370670265407
+"Succession[Take in charge ticket(5), Resolve ticket(6)]",,0.6855600539811066
+"Succession[Assign seriousness(4), Take in charge ticket(5)]",,0.7998200629779577
+"Chain Succession[Insert ticket(10), Assign seriousness(4)]",,0.18983355825461087
+Init[Insert ticket(10)],,0.0
+Existence[Take in charge ticket(5)],,0.6329284750337382

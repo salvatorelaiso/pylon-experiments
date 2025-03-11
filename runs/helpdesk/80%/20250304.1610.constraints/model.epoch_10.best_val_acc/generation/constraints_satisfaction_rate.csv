@@ -1,0 +1,14 @@
+constraint,support,satisfaction
+Exactly1[Closed(7)],0.9921,0.9967707212055974
+Init[Assign seriousness(4)],0.9571999999999999,0.0
+Exactly1[Resolve ticket(6)],0.9133,0.9967707212055974
+"Chain Succession[Resolve ticket(6), Closed(7)]",0.9083,0.94994617868676
+Exactly1[Assign seriousness(4)],0.8954000000000001,0.9811625403659849
+"Alternate Succession[Assign seriousness(4), Closed(7)]",0.8893000000000001,0.9332615715823466
+"Alternate Succession[Assign seriousness(4), Resolve ticket(6)]",0.8181,0.8858988159311088
+Exactly1[Take in charge ticket(5)],0.7996,0.9569429494079655
+"Alternate Succession[Take in charge ticket(5), Closed(7)]",0.7943000000000001,0.7814854682454252
+"Alternate Succession[Take in charge ticket(5), Resolve ticket(6)]",0.7787999999999999,0.7691065662002153
+Absence[Wait(9)],0.7301000000000001,0.7771797631862217
+"Chain Succession[Assign seriousness(4), Take in charge ticket(5)]",0.7140000000000001,0.7545748116254036
+"Chain Precedence[Take in charge ticket(5), Resolve ticket(6)]",0.7138,0.8729817007534983
