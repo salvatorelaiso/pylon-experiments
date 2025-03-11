@@ -234,7 +234,9 @@ def main(args: Args):
         # Create the output directory for the test results
         output_path = model_path.parent / model_path.stem
         output_path = (
-            output_path if args.test_set is None else output_path / args.test_set.parent
+            output_path
+            if args.test_set is None
+            else output_path / args.test_set.parent.name
         )
         output_path.mkdir(parents=True, exist_ok=True)
 
