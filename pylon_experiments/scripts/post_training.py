@@ -180,8 +180,6 @@ def plots(csv_file, plots_dir):
 
 
 def main(args: Args):
-    args.path
-
     history_files = [file for file in args.path.rglob("history.csv")]
 
     # Draw the plots for each history file
@@ -202,10 +200,16 @@ def main(args: Args):
         percentage = model_path.parents[1].name
         model = torch.load(model_path, weights_only=False).to(device)
         test_loader = Loader(
-            args=LoaderArgs(dataset_path=pathlib.Path("./data") / dataset / percentage)
+            args=LoaderArgs(
+                dataset_path=(
+                    args.test_set
+                    if args.test_set
+                    else pathlib.Path("./data") / dataset / percentage
+                )
+            )
         ).get_loaders()["test"]
         print(
-            f"Testing model {model_path} trained on {percentage} traces of {dataset}."
+            f"Testing model {model_path} trained on {percentage} traces of {dataset}{'' if args.test_set is None else ' over dataset ' + str(args.test_set)}."
         )
         print(model)
         # Read the constraints from the file
@@ -229,6 +233,9 @@ def main(args: Args):
 
         # Create the output directory for the test results
         output_path = model_path.parent / model_path.stem
+        output_path = (
+            output_path if args.test_set is None else output_path / args.test_set.parent
+        )
         output_path.mkdir(parents=True, exist_ok=True)
 
         # Test the model without teacher forcing
@@ -325,10 +332,16 @@ def parse_args() -> Args:
         required=False,
         default="runs",
     )
+    argparser.add_argument(
+        "--test-set",
+        type=str,
+        help="Path to the test set.",
+        required=False,
+    )
 
     args = argparser.parse_args()
     cwd = pathlib.Path.cwd()
-    return Args(path=cwd / args.path)
+    return Args(path=cwd / args.path, test_set=args.test_set)
 
 
 if __name__ == "__main__":
