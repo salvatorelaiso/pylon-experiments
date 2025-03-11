@@ -3,16 +3,16 @@
 2,<sos>
 3,<eos>
 4,Assign seriousness
-5,Resolve ticket
-6,Closed
-7,Wait
-8,Create SW anomaly
-9,Resolve SW anomaly
-10,Require upgrade
-11,Insert ticket
-12,Take in charge ticket
-13,Schedule intervention
-14,RESOLVED
-15,INVALID
-16,VERIFIED
+5,Take in charge ticket
+6,Resolve ticket
+7,Closed
+8,Require upgrade
+9,Wait
+10,Insert ticket
+11,Create SW anomaly
+12,Schedule intervention
+13,RESOLVED
+14,INVALID
+15,VERIFIED
+16,Resolve SW anomaly
 17,DUPLICATE
