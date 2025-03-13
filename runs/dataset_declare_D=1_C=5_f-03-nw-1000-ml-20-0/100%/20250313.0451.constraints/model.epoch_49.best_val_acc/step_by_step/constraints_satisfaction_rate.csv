@@ -1,0 +1,11 @@
+constraint,support,satisfaction
+Existence2[a(5)],,0.7555555555555555
+Existence1[c(6)],,1.0
+"Succession[a(5), a(5)]",,0.9
+"Response[c(6), c(6)]",,1.0
+"Chain Succession[a(5), a(5)]",,0.24444444444444444
+"Not Succession[c(6), a(5)]",,0.24444444444444444
+"Co-Existence[a(5), a(5)]",,1.0
+"Co-Existence[c(6), a(5)]",,0.7555555555555555
+"Responded Existence[b(4), b(4)]",,1.0
+Init[c(6)],,1.0

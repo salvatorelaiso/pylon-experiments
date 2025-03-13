@@ -1,0 +1,21 @@
+{
+    "seed": 42,
+    "epochs": 100,
+    "learning_rate": 0.0001,
+    "dataset": "dataset_declare_D=1_C=5_f-02-nw-1000-ml-20-0/100%",
+    "model": {
+        "embedding": 50,
+        "hidden_size": 32,
+        "num_layers": 2,
+        "dropout": 0.2
+    },
+    "constraints": [
+        "Existence2[a]",
+        "Chain Succession[a, a]",
+        "Succession[a, a]",
+        "Response[c, c]",
+        "Chain Succession[a, a]"
+    ],
+    "ignore_task_loss": false,
+    "constraints_multiplier": 1.0
+}
