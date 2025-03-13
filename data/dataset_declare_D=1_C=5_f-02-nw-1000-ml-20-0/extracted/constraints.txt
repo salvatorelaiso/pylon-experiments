@@ -1,0 +1,10 @@
+Existence2[a] - Support: NaN%
+Existence1[c] - Support: NaN%
+Succession[a, a] - Support: NaN%
+Response[c, c] - Support: NaN%
+Chain Succession[a, a] - Support: NaN%
+Not Succession[c, a] - Support: NaN%
+Co-Existence[a, a] - Support: NaN%
+Co-Existence[c, a] - Support: NaN%
+Responded Existence[b, b] - Support: NaN%
+Init[c] - Support: NaN%

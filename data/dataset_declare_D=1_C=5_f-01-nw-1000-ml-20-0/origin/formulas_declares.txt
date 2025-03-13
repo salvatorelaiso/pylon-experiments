@@ -1,0 +1,26 @@
+(
+    !(Absence(a,2)) &
+    !(Not chain succession(a,a)) &
+    (Response(c,c)) &
+    !(Not succession(a,a)) &
+    (Succession(a,a))
+)
+
+
+(!(Alternate response(a,b)) & !(Alternate precedence(a,b)) & (Existence(c,2)) & !(Alternate response(a,b)) & !(Not co-existence(b,b)))
+(!(Exclusive choice(a,b)) & !(Alternate succesion(c, b)) & !(Chain precedence(c,b)) & !(Chain response(a, b)) & (Response(c,a)))
+
+
+(
+    !(Not co-existence(a,a)) &
+    (Init(c)) &
+    (Existence(a,2)) &
+    (Existence(c,1)) &
+    !(Chain precedence(b,b))
+)
+
+
+
+
+
+(!(Succession(c,a)) & !(Absence(a,2)) & !(Not co-existence(c,a)) & (Responded existence(b,b)) & !(Init(c)))
