@@ -26,7 +26,7 @@ class TraceDataset(Dataset):
 
     def __getitem__(self, idx):
         return (
-            torch.tensor(self.traces[idx]),
+            torch.tensor(self.traces[idx].astype(int)),
             torch.tensor(self.traces_lengths[idx]),
         )
 
