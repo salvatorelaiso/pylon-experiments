@@ -1,0 +1,69 @@
+constraint,support,satisfaction
+"Chain Succession[O_Create Offer(10), O_Created(11)]",1.0,0.9999636406606492
+Init[A_Create Application(4)],1.0,0.0
+Absence2[A_Submitted(5)],1.0,1.0
+Absence2[A_Pending(21)],1.0,0.9999636406606492
+Absence2[O_Accepted(20)],1.0,1.0
+Absence2[A_Cancelled(25)],1.0,1.0
+"Alternate Succession[A_Concept(8), A_Accepted(9)]",1.0,0.7783443774826612
+"Alternate Succession[A_Create Application(4), A_Concept(8)]",1.0,0.9993728013961987
+"Alternate Response[A_Accepted(9), W_Complete application(7)]",1.0,0.9998909219819476
+"Alternate Response[A_Create Application(4), W_Complete application(7)]",1.0,0.9994273404052249
+"Alternate Succession[A_Create Application(4), A_Accepted(9)]",1.0,0.7777171788788597
+"Succession[A_Create Application(4), W_Complete application(7)]",1.0,0.9994273404052249
+Exactly1[A_Create Application(4)],1.0,1.0
+Exactly1[A_Concept(8)],1.0,0.9993728013961987
+Exactly1[A_Accepted(9)],1.0,0.7778080772272368
+"Co-Existence[O_Created(11), W_Complete application(7)]",1.0,0.7742994009798841
+"Chain Precedence[W_Call after offers(13), A_Complete(14)]",0.9953,1.0
+"Alternate Succession[A_Concept(8), A_Complete(14)]",0.9953,0.7697272140565206
+"Alternate Response[A_Create Application(4), W_Call after offers(13)]",0.9953,0.7723450864897785
+"Alternate Response[A_Accepted(9), W_Call after offers(13)]",0.9953,0.9943552125657876
+"Alternate Response[A_Concept(8), W_Call after offers(13)]",0.9953,0.7729722850935798
+"Alternate Succession[A_Create Application(4), A_Complete(14)]",0.9953,0.7691000154527192
+"Alternate Succession[A_Accepted(9), A_Complete(14)]",0.9953,0.9911283211984038
+"Succession[W_Complete application(7), W_Call after offers(13)]",0.9953,0.7729177460845537
+"Succession[W_Complete application(7), A_Complete(14)]",0.9953,0.7696726750474944
+Exactly1[A_Complete(14)],0.9953,0.7691000154527192
+"Alternate Precedence[W_Complete application(7), A_Complete(14)]",0.9953,1.0
+Existence3[W_Call after offers(13)],0.9953,0.7723450864897785
+"Chain Response[A_Complete(14), W_Call after offers(13)]",0.9647,0.9821657440484306
+"Succession[O_Sent (mail and online)(12), W_Call after offers(13)]",0.9533,0.8841591448283385
+Absence2[O_Returned(17)],0.9526,0.9803841364202412
+"Chain Response[A_Accepted(9), O_Create Offer(10)]",0.951,0.9563324334396844
+Existence3[W_Complete application(7)],0.9409000000000001,0.9994273404052249
+"Chain Precedence[W_Complete application(7), A_Concept(8)]",0.8924,0.9077836255715234
+Absence3[W_Handle leads(6)],0.8844,0.8757692272731404
+Absence[O_Refused(23)],0.8819,0.9897284866333979
+Absence[A_Denied(22)],0.8809,0.9896739476243717
+"Alternate Precedence[W_Complete application(7), O_Sent (mail and online)(12)]",0.8798999999999999,0.9171370656195177
+Absence3[A_Validating(16)],0.8797,0.9146282712043122
+Absence2[O_Cancelled(24)],0.8773000000000001,0.9794660631016334
+"Alternate Response[O_Sent (mail and online)(12), W_Call after offers(13)]",0.8632,0.9069200912619417
+"Alternate Precedence[W_Complete application(7), O_Create Offer(10)]",0.8606,0.8945306463781553
+"Alternate Precedence[W_Complete application(7), O_Created(11)]",0.8606,0.8944942870388045
+"Alternate Succession[O_Create Offer(10), O_Sent (mail and online)(12)]",0.8286,0.8760328324834338
+"Alternate Response[O_Create Offer(10), W_Call after offers(13)]",0.8206,0.8701698890131166
+"Alternate Response[O_Created(11), W_Call after offers(13)]",0.8206,0.8701335296737658
+Absence2[A_Incomplete(19)],0.8195,0.8714879150645832
+"Chain Succession[O_Created(11), O_Sent (mail and online)(12)]",0.8088,0.8640887895066947
+"Alternate Succession[A_Create Application(4), O_Sent (mail and online)(12)]",0.7685,0.606582858389463
+"Alternate Succession[A_Accepted(9), O_Sent (mail and online)(12)]",0.7685,0.8286202539699854
+"Alternate Succession[A_Concept(8), O_Sent (mail and online)(12)]",0.7685,0.6072100569932645
+Exactly1[O_Sent (mail and online)(12)],0.7685,0.7645732777035441
+"Chain Response[O_Sent (mail and online)(12), W_Complete application(7)]",0.7652,0.8400279966913001
+"Alternate Succession[O_Sent (mail and online)(12), A_Complete(14)]",0.7652,0.8329288356830556
+"Alternate Response[O_Created(11), W_Complete application(7)]",0.7303000000000001,0.8091680074173052
+"Alternate Response[O_Create Offer(10), W_Complete application(7)]",0.7303000000000001,0.8092043667566561
+"Alternate Succession[A_Create Application(4), O_Create Offer(10)]",0.7284,0.5816039922554607
+"Alternate Succession[A_Concept(8), O_Created(11)]",0.7284,0.5822311908592621
+"Alternate Succession[A_Accepted(9), O_Created(11)]",0.7284,0.8036322980011453
+"Alternate Succession[A_Concept(8), O_Create Offer(10)]",0.7284,0.5822311908592621
+"Alternate Succession[A_Create Application(4), O_Created(11)]",0.7284,0.5816039922554607
+"Alternate Succession[A_Accepted(9), O_Create Offer(10)]",0.7284,0.8036686573404961
+Exactly1[O_Create Offer(10)],0.7284,0.7736903820457582
+Exactly1[O_Created(11)],0.7284,0.773726741385109
+"Alternate Succession[O_Created(11), A_Complete(14)]",0.7243,0.8055048039777117
+"Alternate Succession[O_Create Offer(10), A_Complete(14)]",0.7243,0.8055411633170625
+"Chain Response[A_Concept(8), W_Complete application(7)]",0.7066,0.7597556652395626
+"Chain Precedence[W_Complete application(7), A_Accepted(9)]",0.7061,0.7591466463054366
