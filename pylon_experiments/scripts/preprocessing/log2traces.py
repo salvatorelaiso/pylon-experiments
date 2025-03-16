@@ -61,6 +61,7 @@ def main(args: Args):
     event_log = df_to_sorted_event_log(df)
 
     traces = event_log_to_traces_dict(event_log)
+    (args.path / "extracted").mkdir(parents=True, exist_ok=True)
     with open(args.path / "extracted" / "info.csv", "w") as f:
         f.write(f"n_traces,max_len\n")
         f.write(f"{len(traces)},{max([len(i) for i in traces.values()])}\n")
