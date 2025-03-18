@@ -1,0 +1,18 @@
+constraint,support,satisfaction
+"Not Succession[a(4), a(4)]",,0.7666666666666667
+"Not Chain Succession[c(5), c(5)]",,0.4132275132275132
+"Not Succession[a(4), c(5)]",,0.8873015873015873
+"Not CoExistence[c(5), a(4)]",,0.18465608465608466
+"Alternate Precedence[c(5), b(6)]",,0.5428571428571428
+Existence2[c(5)],,0.8835978835978836
+"Alternate Succession[c(5), a(4)]",,0.07142857142857142
+"Not CoExistence[a(4), b(6)]",,0.1164021164021164
+"Not Chain Succession[c(5), b(6)]",,0.28465608465608466
+"Not Chain Succession[a(4), b(6)]",,0.31534391534391537
+"Not Chain Succession[a(4), a(4)]",,0.43386243386243384
+"Succession[c(5), c(5)]",,0.23333333333333334
+"Chain Response[c(5), b(6)]",,0.19682539682539682
+"Response[a(4), c(5)]",,0.5291005291005291
+Absence2[c(5)],,0.23333333333333334
+"Alternate Response[b(6), b(6)]",,0.04814814814814815
+"Not CoExistence[b(6), b(6)]",,0.04814814814814815
