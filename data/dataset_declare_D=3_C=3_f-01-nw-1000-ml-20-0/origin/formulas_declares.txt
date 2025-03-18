@@ -1,0 +1,40 @@
+(
+    (Not chain succession(c,b)) & "Not Chain Succession[c, b]"
+    !(Init(c)) &
+    !(Succession(c,c))) | (!(Not chain succession(a,a)) &
+#    !(Exactly(a,2)) &
+#    (Init(b))) | (!(Responded existence(c,a)) &
+#    !(Chain response(c, b)) &
+    !(Not succession(a,c)) "Succession[a, c]"
+)
+(
+    !(Chain precedence(a,c)) &
+    !(Succession(c,a)) &
+    (Absence(a,2))) | (!(Absence(b,2)) & !(Init(c)) &
+    !(Chain succession(a,a))) | (!(Response(a,a)) &
+    (Alternate response(a,a)) &
+    !(Co-existence(a,a))
+)
+(
+    (Responded existence(a,c)) &
+    (Alternate precedence(a,b)) &
+    (Response(c,c))) | ((Not succession(a,b)) &
+    (Alternate succesion(c, a)) &
+    !(Absence(c,2))) | ((Co-existence(c,a)) &
+    (Chain succession(c,a)) &
+    (Not co-existence(a,b))
+)
+(
+    !(Exactly(c,2)) &
+    (Alternate succesion(c, a)) &
+    (Response(c,c))) | (!(Alternate precedence(c,c)) &
+    (Co-existence(c,b)) &
+    (Existence(a,2))) | ((Init(b)) &
+    (Responded existence(b,b)) &
+    !(Alternate precedence(a,c))
+)
+(
+    (Chain succession(a,a)) &
+    (Chain response(c, c)) &
+    !(Not chain succession(a,a))) | ((Chain succession(c,a)) & (Co-existence(c,a)) & !(Absence(b,2))) | (!(Init(c)) & !(Response(a,c)) & !(Chain succession(a,a))
+)

@@ -1,0 +1,12 @@
+Responded Existence[a, c] - Support: NaN%
+Alternate Precedence[a, b] - Support: NaN%
+Alternate Succession[c, a] - Support: NaN%
+Chain Succession[c, a] - Support: NaN%
+Not CoExistence[a, b] - Support: NaN%
+Co-Existence[c, b] - Support: NaN%
+Alternate Precedence[a, c] - Support: NaN%
+Responded Existence[b, b] - Support: NaN%
+Chain Succession[a, a] - Support: NaN%
+Chain Response[c, c] - Support: NaN%
+Not Chain Succession[c, b] - Support: NaN%
+Succession[a, c] - Support: NaN%
