@@ -1,0 +1,13 @@
+constraint,support,satisfaction
+"Responded Existence[a(4), c(6)]",,0.8333333333333334
+"Alternate Precedence[a(4), b(5)]",,0.0
+"Alternate Succession[c(6), a(4)]",,0.05555555555555555
+"Chain Succession[c(6), a(4)]",,0.011111111111111112
+"Not CoExistence[a(4), b(5)]",,0.011111111111111112
+"Co-Existence[c(6), b(5)]",,0.8222222222222222
+"Alternate Precedence[a(4), c(6)]",,0.5555555555555556
+"Responded Existence[b(5), b(5)]",,1.0
+"Chain Succession[a(4), a(4)]",,0.011111111111111112
+"Chain Response[c(6), c(6)]",,0.17777777777777778
+"Not Chain Succession[c(6), b(5)]",,0.4
+"Succession[a(4), c(6)]",,0.011111111111111112
