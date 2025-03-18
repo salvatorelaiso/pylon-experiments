@@ -1,5 +1,42 @@
-(!(Chain precedence(c,b)) & !(Not succession(a,a)) & !(Not chain succession(c,c)) & !(Not co-existence(c,b))) | ((Alternate response(b,b)) & !(Succession(a,c)) & (Not co-existence(c,a)) & !(Responded existence(c,c)))
-((Alternate precedence(c,b)) & !(Exclusive choice(a,a)) & (Existence(c,2)) & !(Alternate response(a,a))) | ((Existence(a,1)) & (Alternate succesion(c, a)) & (Not co-existence(a,b)) & (Not chain succession(c,b)))
-(!(Alternate precedence(c,a)) & !(Chain succession(a,b)) & !(Chain succession(a,a)) & (Existence(c,1))) | ((Not succession(c,b)) & (Succession(c,c)) & !(Exactly(a,2)) & (Chain response(c, b)))
-(!(Exclusive choice(b,b)) & (Response(a,c)) & !(Init(c)) & (Co-existence(a,a))) | (!(Chain succession(c,b)) & (Absence(c,2)) & (Alternate response(b,b)) & !(Co-existence(b,b)))
+(
+    !(Chain precedence(c,b)) &
+    !(Not succession(a,a)) &
+    !(Not chain succession(c,c)) &
+    !(Not co-existence(c,b))) | ((Alternate response(b,b)) &
+    !(Succession(a,c)) & (Not co-existence(c,a)) &
+    !(Responded existence(c,c))
+)
+
+
+(
+    (Alternate precedence(c,b)) &
+    !(Exclusive choice(a,a)) &
+    (Existence(c,2)) &
+    !(Alternate response(a,a))) | ((Existence(a,1)) &
+    (Alternate succesion(c, a)) &
+    (Not co-existence(a,b)) &
+    (Not chain succession(c,b))
+)
+
+
+(
+    !(Alternate precedence(c,a)) &
+    !(Chain succession(a,b)) &
+    !(Chain succession(a,a)) &
+    (Existence(c,1))) | ((Not succession(c,b)) &
+    (Succession(c,c)) &
+    !(Exactly(a,2)) &
+    (Chain response(c, b))
+)
+
+(
+    !(Exclusive choice(b,b)) &
+    (Response(a,c)) &
+    !(Init(c)) &
+    (Co-existence(a,a))) | (!(Chain succession(c,b)) &
+    (Absence(c,2)) &
+    (Alternate response(b,b)) &
+    !(Co-existence(b,b))
+)
+
 ((Succession(b,b)) & !(Alternate response(b,b)) & (Init(c)) & !(Chain succession(c,c))) | (!(Not chain succession(a,c)) & (Exactly(a,2)) & (Exclusive choice(b,b)) & (Alternate succesion(c, a)))

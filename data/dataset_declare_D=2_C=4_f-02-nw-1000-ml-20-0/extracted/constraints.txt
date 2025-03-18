@@ -1,0 +1,17 @@
+Not Succession[a, a] - Support: NaN%
+Not Chain Succession[c, c] - Support: NaN%
+Not Succession[a, c] - Support: NaN%
+Not CoExistence[c, a] - Support: NaN%
+Alternate Precedence[c, b] - Support: NaN%
+Existence2[c] - Support: NaN%
+Alternate Succession[c, a] - Support: NaN%
+Not CoExistence[a, b] - Support: NaN%
+Not Chain Succession[c, b] - Support: NaN%
+Not Chain Succession[a, b] - Support: NaN%
+Not Chain Succession[a, a] - Support: NaN%
+Succession[c, c] - Support: NaN%
+Chain Response[c, b] - Support: NaN%
+Response[a, c] - Support: NaN%
+Absence2[c] - Support: NaN%
+Alternate Response[b, b] - Support: NaN%
+Not CoExistence[b, b] - Support: NaN%
