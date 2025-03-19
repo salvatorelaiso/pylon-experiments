@@ -1,0 +1,21 @@
+{
+    "seed": 42,
+    "epochs": 100,
+    "learning_rate": 0.0001,
+    "dataset": "bpic2013_closed_problems/80%",
+    "model": {
+        "embedding": 50,
+        "hidden_size": 32,
+        "num_layers": 2,
+        "dropout": 0.2
+    },
+    "constraints": [
+        "Succession[Accepted, Completed]*0.99",
+        "Chain Precedence[Accepted, Completed]*0.99",
+        "Init[Accepted]*0.96",
+        "Exactly1[Completed]*0.95",
+        "Absence2[Queued]*0.88"
+    ],
+    "ignore_task_loss": false,
+    "constraints_multiplier": 1.0
+}

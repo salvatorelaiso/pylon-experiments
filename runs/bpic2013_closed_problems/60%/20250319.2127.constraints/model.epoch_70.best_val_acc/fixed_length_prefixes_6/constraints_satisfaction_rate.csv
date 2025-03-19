@@ -1,0 +1,6 @@
+constraint,support,satisfaction
+"Succession[Accepted(5), Completed(6)]",0.9993000000000001,0.9130434782608695
+"Chain Precedence[Accepted(5), Completed(6)]",0.996,1.0
+Init[Accepted(5)],0.963,0.0
+Exactly1[Completed(6)],0.9590000000000001,1.0
+Absence2[Queued(4)],0.8823000000000001,0.5652173913043478
