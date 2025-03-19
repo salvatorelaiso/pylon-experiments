@@ -1,0 +1,9 @@
+Activities:
+1) Accepted : Exists in 97.68% of traces in the log
+2) Completed : Exists in 44.20% of traces in the log
+3) Queued : Exists in 29.55% of traces in the log
+Constraints:
+1) In 98.05% of traces in the log, Completed occurs at most once
+2) In 92.67% of traces in the log, Accepted occurs first
+3) In 76.56% of traces in the log, Accepted occurs at most twice
+4) In 70.45% of traces in the log, Queued does not occur

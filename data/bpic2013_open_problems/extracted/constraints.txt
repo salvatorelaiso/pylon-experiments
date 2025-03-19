@@ -1,0 +1,4 @@
+Absence2[Completed] - Support: 98.05%
+Init[Accepted] - Support: 92.67%
+Absence3[Accepted] - Support: 76.56%
+Absence[Queued] - Support: 70.45%

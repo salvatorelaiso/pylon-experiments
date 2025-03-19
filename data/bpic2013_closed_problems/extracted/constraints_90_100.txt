@@ -1,0 +1,4 @@
+Succession[Accepted, Completed] - Support: 99.93%
+Chain Precedence[Accepted, Completed] - Support: 99.60%
+Init[Accepted] - Support: 96.30%
+Exactly1[Completed] - Support: 95.90%
